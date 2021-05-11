@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F9F9F9">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="1"/>
+
+        <View
+            style="@style/vertical_dotted_line_style"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="2"/>
+
+        <View
+            style="@style/vertical_dotted_line_style"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="3"/>
+
+        <View
+            style="@style/vertical_dotted_line_style"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="4"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_dotted_line_style"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="5"/>
+
+        <View
+            style="@style/vertical_dotted_line_style"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="6"/>
+
+        <View
+            style="@style/vertical_dotted_line_style"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="7"/>
+
+        <View
+            style="@style/vertical_dotted_line_style"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="8"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_dotted_line_style"/>
+
+    <!-- 虚线分割 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layerType="software"
+        android:background="@drawable/horizontal_dotted_line" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="一"/>
+
+        <!-- 虚线分割 -->
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layerType="software"
+            android:background="@drawable/vertical_dotted_line" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="二"/>
+
+        <View
+            style="@style/vertical_dotted_line_style"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="三"/>
+
+        <View
+            style="@style/vertical_dotted_line_style"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="四"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_dotted_line_style"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="五"/>
+
+        <View
+            style="@style/vertical_dotted_line_style"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="六"/>
+
+        <View
+            style="@style/vertical_dotted_line_style"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="七"/>
+
+        <View
+            style="@style/vertical_dotted_line_style"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="28dp"
+            android:text="八"/>
+
+    </LinearLayout>
+
+</LinearLayout>

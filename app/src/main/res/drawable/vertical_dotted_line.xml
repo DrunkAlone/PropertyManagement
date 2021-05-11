@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--注意上下左右方向问题-->
+    <!--这里思路相当于一个只显示一条边的矩形虚线边框-->
+    <item
+        android:left="-600dp"
+        android:right="-600dp">
+        <rotate android:drawable="@drawable/horizontal_dotted_line"
+        android:visible="true"
+        android:fromDegrees="90"
+        />
+    </item>
+</layer-list>

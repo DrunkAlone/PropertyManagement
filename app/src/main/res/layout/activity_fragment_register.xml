@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#F7F7F7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/register_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/register_l1"
+        android:paddingTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="注册新用户"
+        android:typeface="monospace"
+        android:textSize="25sp"
+        android:textColor="@color/colorAccent"/>
+
+    <LinearLayout
+        android:id="@+id/register_l1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/register_l2"
+        app:layout_constraintBottom_toBottomOf="@id/register_title"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/register_tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:hint="用户名："
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/register_username"
+            style="@style/em_login_et_input"
+            android:layout_width="200dp"
+            android:background="@drawable/layer"
+            android:hint="请输入用户名"
+            app:layout_constraintVertical_bias="0.25" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/register_l2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_l1"
+        app:layout_constraintBottom_toTopOf="@id/register_l3"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/register_tv_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:hint="密    码："
+            android:textSize="15sp" />
+        <EditText
+            android:id="@+id/register_password"
+            android:inputType="textPassword"
+            android:layout_width="200dp"
+            android:background="@drawable/layer"
+            android:hint="请输入密码"
+            style="@style/em_login_et_input"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/register_l3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_l2"
+        app:layout_constraintBottom_toTopOf="@id/register_l4"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/register_tv_repassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:hint="确    认："
+            android:textSize="15sp" />
+        <EditText
+            android:id="@+id/register_repassword"
+            android:inputType="textPassword"
+            android:hint="请再次输入密码"
+            android:layout_width="200dp"
+            android:background="@drawable/layer"
+            style="@style/em_login_et_input"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/register_l4"
+        android:layout_marginRight="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/register_l3"
+        app:layout_constraintBottom_toTopOf="@id/register_l5"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/register_tv_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:hint="年    龄："
+            android:textSize="15sp" />
+        <EditText
+            android:id="@+id/register_age"
+            android:hint="请输入年龄"
+            android:background="@drawable/layer"
+            android:layout_width="150dp"
+            style="@style/em_login_et_input" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/register_l5"
+        android:paddingTop="20dp"
+        android:layout_marginRight="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/register_l4"
+        app:layout_constraintBottom_toTopOf="@id/register_l6"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/register_tv_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:hint="性    别："
+            android:textSize="15sp" />
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.6"
+            android:id="@+id/register_sexRadio"
+            android:layout_marginLeft="10dp">
+            <RadioButton
+                android:layout_marginLeft="30dp"
+                android:id="@+id/register_rb_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:textColor="#386583"
+                android:text="女"/>
+
+            <RadioButton
+                android:id="@+id/register_rb_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="#386583"
+                android:text="男" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/register_l6"
+        android:layout_marginRight="50dp"
+        android:paddingTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/register_l5"
+        app:layout_constraintBottom_toTopOf="@id/register_user_prot"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/register_tv_roomNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:hint="房间号："
+            android:textSize="15sp" />
+        <EditText
+            android:id="@+id/register_roomNo"
+            app:layout_constraintVertical_bias="0.45"
+            android:layout_width="150dp"
+            android:hint="请输入房号"
+            android:background="@drawable/layer"
+            style="@style/em_login_et_input" />
+    </LinearLayout>
+
+    <TextView
+        android:paddingVertical="20dp"
+        android:id="@+id/register_user_prot"
+        android:layout_centerInParent="true"
+        android:text="*注册即代表同意《用户协议》及《公寓手册》"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bt_register"
+        app:layout_constraintBottom_toBottomOf="@id/register_l6"/>
+
+    <Button
+        android:id="@+id/bt_register"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_user_prot"
+        style="@style/em_login_btn"
+        android:layout_width="200dp"
+        android:text="注册"
+        android:onClick="onClick"
+        android:enabled="true"
+        android:background="@drawable/loginbutton"
+        android:textColor="@color/base_F5F5F5"
+        android:layout_marginTop="@dimen/em_margin_20"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

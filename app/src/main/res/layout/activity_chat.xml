@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@drawable/layer">
+
+    <RelativeLayout
+        android:id="@+id/chat_layout"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/chat_send"
+            android:background="@drawable/loginbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:textColor="#F7F7F7"
+            android:layout_margin="10dp"
+            android:text="发送"/>
+        <EditText
+            android:id="@+id/chat_messageInput"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/chat_send"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/chat_layout">
+    <TextView
+        android:id="@+id/chat_next"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:maxLines="15"
+        android:scrollbars="vertical"/>
+    </RelativeLayout>
+</RelativeLayout>

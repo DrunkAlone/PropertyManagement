@@ -1,0 +1,2 @@
+rootProject.name='PropertyManagePro'
+include ':app'
