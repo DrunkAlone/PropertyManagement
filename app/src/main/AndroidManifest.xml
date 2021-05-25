@@ -86,6 +86,7 @@
         <activity android:name=".basic.AnnounceDetailActivity"/>
         <activity android:name=".basic.SettingsActivity"/>
         <activity android:name=".basic.PayActivity"/>
+        <activity android:name=".basic.ConsultActivity"/>
         <activity
             android:name=".CentralActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />

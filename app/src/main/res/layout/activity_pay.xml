@@ -5,6 +5,43 @@
     android:layout_height="wrap_content"
     android:background="#F9F9F9">
 
+    <!-- 轮播导航 -->
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="240dp"
+        android:orientation="vertical">
+        <com.pro.propertymanagepro.adapter.MyViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="198dp" />
+        <!-- 广告条下边的文字 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:background="#5EFFFFFF"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/image_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/point_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal" >
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
