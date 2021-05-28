@@ -13,10 +13,14 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 读取外置存储。如果开发者使用了so动态加载功能并且把so文件放在了外置存储区域，则需要申请该权限，否则不需要 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 写入扩展存储权限-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <!-- 这个权限用于访问GPS定位(用于定位消息，如果不用定位相关可以移除) -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- api 21后被标记为deprecated -->
     <uses-permission android:name="android.permission.GET_TASKS" />
     <!-- 用于访问wifi网络信息-->
@@ -44,6 +48,14 @@
         android:theme="@style/AppTheme">
         <!-- 设置环信应用的AppKey -->
         <meta-data android:name="EASEMOB_APPKEY"  android:value="1113210419083670#pms" />
+        <!-- 设置百度地图SDK -->
+        <meta-data
+                android:name="com.baidu.lbsapi.API_KEY"
+                android:value="DTpa9bBHxjNbGojDjMqwY4iah8HaGaGc" />
+        <!-- 声明定位的service组件 -->
+        <service android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"/>
         <!-- 声明SDK所需的service SDK核心功能-->
         <service android:name="com.hyphenate.chat.EMChatService" android:exported="true"/>
         <service android:name="com.hyphenate.chat.EMJobService"
@@ -86,10 +98,16 @@
         <activity android:name=".basic.AnnounceDetailActivity"/>
         <activity android:name=".basic.SettingsActivity"/>
         <activity android:name=".basic.PayActivity"/>
+        <activity android:name=".basic.PaySuccessActivity"/>
         <activity android:name=".basic.ConsultActivity"/>
+        <activity android:name=".basic.SurroundingsActivity"/>
+        <activity android:name=".basic.SurroundingsSearchActivity"/>
+        <activity android:name=".basic.VoteActivity"/>
+        <activity android:name=".basic.VoteDetailActivity"/>
         <activity
             android:name=".CentralActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+
     </application>
 
 </manifest>

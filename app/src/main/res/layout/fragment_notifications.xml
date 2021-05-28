@@ -12,44 +12,44 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ui.notifications.NotificationsFragment">
     <!-- 相对布局管理器-->
-    <RelativeLayout
-        android:layout_marginLeft="10dp"
-        android:background="@drawable/layer"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp">
+<!--    <RelativeLayout-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:background="@drawable/layer"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="60dp">-->
 
-        <EditText
-            android:id="@+id/text1"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:hint="查找好友"
-            android:textSize="20dp"/>
+<!--        <EditText-->
+<!--            android:id="@+id/text1"-->
+<!--            android:layout_width="230dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="查找好友"-->
+<!--            android:textSize="20dp"/>-->
 
 
-        <ImageButton
-            android:layout_marginTop="10dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginRight="8dp"
-            android:scaleType="centerCrop"
-            android:layout_toLeftOf="@+id/bt"
-            android:src="@drawable/addplus"
-            android:id="@+id/imageButton"
-            android:background="#0000"/>
+<!--        <ImageButton-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_marginRight="8dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:layout_toLeftOf="@+id/bt"-->
+<!--            android:src="@drawable/addplus"-->
+<!--            android:id="@+id/imageButton"-->
+<!--            android:background="#0000"/>-->
 
-        <ImageButton
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:paddingTop="3dp"
-            android:id="@+id/bt"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:scaleType="centerCrop"
-            android:layout_alignParentRight="true"
-            android:background="#0000"
-            android:src="@drawable/search"/>
+<!--        <ImageButton-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:paddingTop="3dp"-->
+<!--            android:id="@+id/bt"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:background="#0000"-->
+<!--            android:src="@drawable/search"/>-->
 
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 
     <!-- 图像视图-->
     <ListView

@@ -44,6 +44,30 @@ public class DBHelper extends SQLiteOpenHelper {
             "title varchar(100)," +
             "content varchar(255)," +
             "pubTime varchar(100))";
+    private final static String createTable6 = "create table " + "Vote" +
+            "(id integer primary key AUTOINCREMENT," +
+            "title varchar(50)," +
+            "content varchar(255)," +
+            "pubTime varchar(100)," +
+            "endTime varchar(100)," +
+            "nameList varchar(255)," +
+            "status varchar(30)," +
+            "approveNum int," +
+            "totalNum int)";
+    private final static String createTable7 = "create table " + "Orders" +
+            "(id integer primary key AUTOINCREMENT," +
+            "orderID varchar(50)," +
+            "username varchar(50)," +
+            "amount int," +
+            "type varchar(20)," +
+            "payDate varchar(50)," +
+            "status varchar(20))";
+    private final static String createTable8 = "create table " + "Deposit" +
+            "(id integer primary key AUTOINCREMENT," +
+            "username varchar(50)," +
+            "type varchar(20)," +
+            "amount int," +
+            "lastDate varchar(50))";
 
     public DBHelper(Context context){
         super(context, db_name, null, version);
@@ -56,6 +80,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(createTable3);
         db.execSQL(createTable4);
         db.execSQL(createTable5);
+        db.execSQL(createTable6);
+        db.execSQL(createTable7);
+        db.execSQL(createTable8);
     }
 
     @Override
@@ -65,6 +92,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Moment");
         db.execSQL("DROP TABLE IF EXISTS Advice");
         db.execSQL("DROP TABLE IF EXISTS Announce");
+        db.execSQL("DROP TABLE IF EXISTS Vote");
+        db.execSQL("DROP TABLE IF EXISTS Orders");
+        db.execSQL("DROP TABLE IF EXISTS Deposit");
         onCreate(db);
     }
 }

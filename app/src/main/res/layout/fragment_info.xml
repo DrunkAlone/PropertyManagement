@@ -67,12 +67,12 @@
             android:layout_height="50dp"
             app:left_icon="@drawable/ic_sign_name"
             app:left_text="我的报修"/>
-        <com.pro.propertymanagepro.ui.info.ItemView
-            android:id="@+id/info_mypay"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            app:left_icon="@drawable/ic_collect"
-            app:left_text="我的缴费"/>
+<!--        <com.pro.propertymanagepro.ui.info.ItemView-->
+<!--            android:id="@+id/info_mypay"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="50dp"-->
+<!--            app:left_icon="@drawable/ic_collect"-->
+<!--            app:left_text="我的缴费"/>-->
         <com.pro.propertymanagepro.ui.info.ItemView
             android:id="@+id/info_mymoment"
             android:layout_width="wrap_content"

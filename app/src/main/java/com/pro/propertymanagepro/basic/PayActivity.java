@@ -1,13 +1,20 @@
 package com.pro.propertymanagepro.basic;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,188 +22,142 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.pro.propertymanagepro.R;
+import com.pro.propertymanagepro.dao.DepositService;
+import com.pro.propertymanagepro.dao.OrderService;
+import com.pro.propertymanagepro.entity.Deposit;
+import com.pro.propertymanagepro.entity.Order;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
-public class PayActivity extends AppCompatActivity {
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
 
-    private int pre = 0;
+public class PayActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private ViewPager viewPager;
+    private EditText et_type;
+    private EditText et_amount;
+    private Button bt_type_choose;
+    private Button bt_deposit_choose;
+    private Button bt_submit;
 
-    private LinearLayout pointGroup;
+    OrderService orderService;
+    DepositService depositService;
 
-    private TextView iamgeDesc;
+    private AlertDialog alertDialog;
+    private AlertDialog alertDialog1;
 
-    // 图片资源ID
-    private final int[] imageIds = { R.drawable.background, R.drawable.sample1, R.drawable.sample2};
+    private String username;
+    private String orderID;
+    private int amount;
+    private String type;
+    private String payDate;
+    private String status;
 
-    // 图片标题集合
-    private final String[] imageDescriptions = { "巩俐不低俗，我就不能低俗",
-            "扑树又回来啦！再唱经典老歌引万人大合唱", "揭秘北京电影如何升级"};
-
-    private ArrayList<ImageView> imageList;
-
-    /**
-     * 上一个页面的位置
-     */
-    protected int lastPosition;
+    final String[] items = {"停车费", "水费", "电费", "天然气费", "供暖费"};
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay);
+        addActivity(this);
+        Intent intent = this.getIntent();
+        username = intent.getStringExtra("username");
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        pointGroup = (LinearLayout) findViewById(R.id.point_group);
-        iamgeDesc = (TextView) findViewById(R.id.image_desc);
-        iamgeDesc.setText(imageDescriptions[0]);
+        orderService = new OrderService(this);
+        depositService = new DepositService(this);
 
-        imageList = new ArrayList<ImageView>();
-        for (int i = 0; i < imageIds.length; i++) {
-
-            // 初始化图片资源
-            ImageView image = new ImageView(this);
-            image.setBackgroundResource(imageIds[i]);
-            imageList.add(image);
-            // 添加指示点
-            ImageView point = new ImageView(this);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-
-            params.rightMargin = 20;
-            point.setLayoutParams(params);
-
-            point.setBackgroundResource(R.drawable.point_bg);
-            if (i == 0) {
-                point.setEnabled(true);
-            } else {
-                point.setEnabled(false);
-            }
-            pointGroup.addView(point);
-        }
-
-        viewPager.setAdapter(new MyPagerAdapter());
-        pointGroup.getChildAt(0).setBackgroundResource(R.drawable.point_focused);
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            /**
-             * 页面切换后调用
-             * position 新的页面位置
-             */
-            public void onPageSelected(int position) {
-
-                position = position % imageList.size();
-
-                // 设置文字描述内容
-                iamgeDesc.setText(imageDescriptions[position]);
-                // 改变指示点的状态
-                // 把当前点enbale 为true
-                pointGroup.getChildAt(position).setBackgroundResource(R.drawable.point_focused);
-                // 把上一个点设为false
-                pointGroup.getChildAt(lastPosition).setBackgroundResource(R.drawable.point_bg);
-                lastPosition = position;
-
-            }
-
-            @Override
-            /**
-             * 页面正在滑动的时候，回调
-             */
-            public void onPageScrolled(int position, float positionOffset,
-                                       int positionOffsetPixels) {
-            }
-
-            @Override
-            /**
-             * 当页面状态发生变化的时候，回调
-             */
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
-        /*
-         * 自动循环： 1、定时器：Timer 2、开子线程 while true 循环 3、ColckManager 4、 用handler
-         * 发送延时信息，实现循环
-         */
-        isRunning = true;
-        // 设置图片的自动滑动
-        handler.sendEmptyMessageDelayed(0, 3000);
+        initView();
     }
 
-    /**
-     * 判断是否自动滚动
-     */
-    private boolean isRunning = false;
+    public void initView(){
+        et_type = findViewById(R.id.pay_type);
+        et_amount = findViewById(R.id.pay_amount);
+        bt_type_choose = findViewById(R.id.pay_type_choose);
+        bt_deposit_choose = findViewById(R.id.pay_deposit_choose);
+        bt_submit = findViewById(R.id.pay_submit);
 
-    @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-
-            // 让viewPager 滑动到下一页
-            viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
-            if (isRunning) {
-                handler.sendEmptyMessageDelayed(0, 3000);
-            }
-        };
-    };
+        bt_type_choose.setOnClickListener(this);
+        bt_deposit_choose.setOnClickListener(this);
+        bt_submit.setOnClickListener(this);
+    }
 
     protected void onDestroy() {
-
         super.onDestroy();
-        isRunning = false;
     };
 
-    private class MyPagerAdapter extends PagerAdapter {
-
-        @Override
-        /**
-         * 获得页面的总数
-         */
-        public int getCount() {
-            return Integer.MAX_VALUE; // 使得图片可以循环
-        }
-        /**
-         * 获得相应位置上的view
-         * container view的容器，其实就是viewpager自身
-         * position 相应的位置
-         */
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            // 给 container 添加一个view
-            try{
-                container.addView(imageList.get(position % imageList.size()));
-            }catch (Exception ex){
-                ex.printStackTrace();
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.pay_type_choose){
+            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+            alertBuilder.setTitle("请选择缴费类型");
+            alertBuilder.setItems(items, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    et_type.setText(items[which]);
+                }
+            });
+            alertDialog = alertBuilder.create();
+            alertDialog.show();
+        }else if(v.getId() == R.id.pay_deposit_choose){
+            if(et_type.getText().toString().equals("")){
+                Toast.makeText(this, "请先选择缴费类型！", Toast.LENGTH_SHORT).show();
+            }else{
+                type = et_type.getText().toString();
+                Deposit deposit = depositService.getDepositByUsernameAndType(username, type);
+                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+                alertBuilder.setTitle("余额查询");
+                alertBuilder.setMessage("您的" + type + "余额为：" + (deposit == null ? 0 : deposit.getAmount()) + "元");
+                alertDialog = alertBuilder.create();
+                alertDialog.show();
             }
-            // 返回一个和该view相对的object
-            return imageList.get(position % imageList.size());
-        }
-
-        @Override
-        /**
-         * 判断 view和object的对应关系
-         */
-        public boolean isViewFromObject(View view, Object object) {
-            if (view == object) {
-                return true;
-            } else {
-                return false;
+        }else if(v.getId() == R.id.pay_submit){
+            orderID = getRandomID();
+            amount = Integer.parseInt(et_amount.getText().toString().trim());
+            type = et_type.getText().toString();
+            payDate = getTime();
+            status = "交易完成";
+            boolean isEmpty = username.equals("") || orderID.equals("") || type.equals("") || amount == 0
+                    || payDate.equals("");
+            if(!isEmpty){
+                Order order = new Order(1, orderID, username, amount, type, payDate, status);
+                orderService.addOrder(order);
+                //更改余额信息
+                Deposit deposit = depositService.getDepositByUsernameAndType(username, type);
+                if(deposit == null){
+                    Deposit d = new Deposit(1, username, type, amount, payDate);
+                    depositService.addDeposit(d);
+                }else{
+                    deposit.setAmount(deposit.getAmount() + amount);
+                    deposit.setLastDate(payDate);
+                    depositService.updateDeposit(deposit);
+                }
+                System.out.println(orderService.getAllOrders());
+                System.out.println(depositService.getAllDeposits());
+                Intent intent = new Intent(PayActivity.this, PaySuccessActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("orderID", orderID);
+                intent.putExtra("amount", amount);
+                intent.putExtra("type", type);
+                intent.putExtra("date", payDate);
+                startActivity(intent);
+            }else{
+                Toast.makeText(this, "请输入正确的缴费信息！", Toast.LENGTH_SHORT).show();
             }
         }
+    }
 
-        @Override
-        /**
-         * 销毁对应位置上的object
-         */
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            // System.out.println("destroyItem ::" + position);
+    public String getTime(){
+        Calendar calendar = Calendar.getInstance();
+        String now = calendar.get(Calendar.YEAR)+ "年" + (calendar.get(Calendar.MONTH)+1) + "月" + calendar.get(Calendar.DAY_OF_MONTH)+ "日"
+                + calendar.get(Calendar.HOUR) + "时"+ calendar.get(Calendar.MINUTE) + "分";
+        return now;
+    }
 
-            container.removeView((View) object);
-            object = null;
-        }
+    public String getRandomID(){
+        long date = new Date().getTime();
+        int random = (int)((Math.random()*9+1)*100000);
+        return date + "" + random;
     }
 }

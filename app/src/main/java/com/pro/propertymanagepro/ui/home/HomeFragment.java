@@ -39,6 +39,9 @@ import com.pro.propertymanagepro.basic.MomentAddActivity;
 import com.pro.propertymanagepro.basic.MyRepairsActivity;
 import com.pro.propertymanagepro.basic.PayActivity;
 import com.pro.propertymanagepro.basic.RepairsActivity;
+import com.pro.propertymanagepro.basic.SurroundingsActivity;
+import com.pro.propertymanagepro.basic.VoteActivity;
+import com.pro.propertymanagepro.basic.VoteDetailActivity;
 import com.pro.propertymanagepro.ui.dashboard.DashboardFragment;
 import com.pro.propertymanagepro.ui.info.InfoFragment;
 import com.pro.propertymanagepro.ui.notifications.NotificationsFragment;
@@ -114,7 +117,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 //        tv_repairs.setTypeface(typeface);
         repairs = root.findViewById(R.id.home_repairs);
         pay = root.findViewById(R.id.home_pay);
-        vehicle = root.findViewById(R.id.home_parking);
+//        vehicle = root.findViewById(R.id.home_parking);
         announce = root.findViewById(R.id.home_announce);
         advice = root.findViewById(R.id.home_advice);
         contact = root.findViewById(R.id.home_contact);
@@ -127,7 +130,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         repairs.setOnClickListener(this);
         pay.setOnClickListener(this);
-        vehicle.setOnClickListener(this);
+//        vehicle.setOnClickListener(this);
         announce.setOnClickListener(this);
         advice.setOnClickListener(this);
         contact.setOnClickListener(this);
@@ -301,9 +304,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 intent5.putExtra("username", username);
                 startActivity(intent5);
                 break;
-            case R.id.home_parking:
-                Toast.makeText(getContext(), "该功能尚未开发，敬请期待！",Toast.LENGTH_SHORT).show();
-                break;
+//            case R.id.home_parking:
+//                Toast.makeText(getContext(), "该功能尚未开发，敬请期待！",Toast.LENGTH_SHORT).show();
+//                break;
             case R.id.home_announce:
                 Intent intent4 = new Intent(HomeFragment.this.getActivity(), AnnounceActivity.class);
                 intent4.putExtra("username", username);
@@ -362,10 +365,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 startActivity(intent6);
                 break;
             case R.id.home_surroundings:
-                Toast.makeText(getContext(), "该功能尚未开发，敬请期待！",Toast.LENGTH_SHORT).show();
+                Intent intent7 = new Intent(HomeFragment.this.getActivity(), SurroundingsActivity.class);
+                intent7.putExtra("username", username);
+                startActivity(intent7);
                 break;
             case R.id.home_vote:
-                Toast.makeText(getContext(), "该功能尚未开发，敬请期待！",Toast.LENGTH_SHORT).show();
+                Intent intent8 = new Intent(HomeFragment.this.getActivity(), VoteActivity.class);
+                intent8.putExtra("username", username);
+                startActivity(intent8);
                 break;
         }
     }

@@ -77,6 +77,25 @@ public class UserService {
         }
     }
 
+    public User getUserByID(int id){
+        String sql = "select * from User where id = ?";
+        Cursor cursor = sdb.rawQuery(sql, new String[]{String.valueOf(id)});
+        if(cursor.moveToNext()){
+            String name = cursor.getString(cursor.getColumnIndex("username"));
+            String password = cursor.getString(cursor.getColumnIndex("pwd"));
+            int age = cursor.getInt(cursor.getColumnIndex("age"));
+            int gender = cursor.getInt(cursor.getColumnIndex("gender"));
+            int roomNo = cursor.getInt(cursor.getColumnIndex("roomNo"));
+            User user = new User(id, name, password, age, gender, roomNo);
+            cursor.close();
+            return user;
+        }
+        else{
+            Log.e("tag", "没有符合条件的结果！");
+            return null;
+        }
+    }
+
     public List<User> getUsers(){
         List<User> list= new ArrayList<User>();
         Cursor cursor = sdb.query("User", null, null, null, null, null, "username DESC");
