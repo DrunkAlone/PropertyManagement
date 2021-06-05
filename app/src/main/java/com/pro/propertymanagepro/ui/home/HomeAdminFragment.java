@@ -5,8 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,35 +14,27 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.pro.propertymanagepro.MainActivity;
 import com.pro.propertymanagepro.R;
 import com.pro.propertymanagepro.basic.AdviceActivity;
 import com.pro.propertymanagepro.basic.AnnounceActivity;
 import com.pro.propertymanagepro.basic.ConsultActivity;
 import com.pro.propertymanagepro.basic.MomentAddActivity;
-import com.pro.propertymanagepro.basic.MyRepairsActivity;
 import com.pro.propertymanagepro.basic.PayActivity;
 import com.pro.propertymanagepro.basic.RepairsActivity;
 import com.pro.propertymanagepro.basic.SurroundingsActivity;
 import com.pro.propertymanagepro.basic.TestActivity;
 import com.pro.propertymanagepro.basic.VoteActivity;
-import com.pro.propertymanagepro.basic.VoteDetailActivity;
 import com.pro.propertymanagepro.ui.dashboard.DashboardFragment;
-import com.pro.propertymanagepro.ui.info.InfoFragment;
 import com.pro.propertymanagepro.ui.notifications.NotificationsFragment;
 import com.pro.propertymanagepro.util.PermissionActivity;
 
@@ -52,7 +42,7 @@ import java.util.ArrayList;
 
 import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
 
-public class HomeFragment extends Fragment implements View.OnClickListener{
+public class HomeAdminFragment extends Fragment implements View.OnClickListener{
     private HomeViewModel homeViewModel;
 
     private TextView tv_repairs;
@@ -113,30 +103,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        repairs = root.findViewById(R.id.home_repairs);
-        pay = root.findViewById(R.id.home_pay);
-        vehicle = root.findViewById(R.id.home_parking);
-        announce = root.findViewById(R.id.home_announce);
-        advice = root.findViewById(R.id.home_advice);
-        contact = root.findViewById(R.id.home_contact);
-        push = root.findViewById(R.id.home_moment);
-        friend = root.findViewById(R.id.home_friends);
-        forum = root.findViewById(R.id.home_forum);
-        consult = root.findViewById(R.id.home_consult);
-        surroundings = root.findViewById(R.id.home_surroundings);
-        vote = root.findViewById(R.id.home_vote);
+        View root = inflater.inflate(R.layout.fragment_home_admin, container, false);
+        repairs = root.findViewById(R.id.home_admin_repairs);
+        pay = root.findViewById(R.id.home_admin_pay);
+        announce = root.findViewById(R.id.home_admin_announce);
+        advice = root.findViewById(R.id.home_admin_advice);
+        contact = root.findViewById(R.id.home_admin_contact);
+        push = root.findViewById(R.id.home_admin_moment);
+        surroundings = root.findViewById(R.id.home_admin_surroundings);
+        vote = root.findViewById(R.id.home_admin_vote);
 
         repairs.setOnClickListener(this);
         pay.setOnClickListener(this);
-        vehicle.setOnClickListener(this);
         announce.setOnClickListener(this);
         advice.setOnClickListener(this);
         contact.setOnClickListener(this);
         push.setOnClickListener(this);
-        friend.setOnClickListener(this);
-        forum.setOnClickListener(this);
-        consult.setOnClickListener(this);
         surroundings.setOnClickListener(this);
         vote.setOnClickListener(this);
 
@@ -174,7 +156,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             pointGroup.addView(point);
         }
 
-        viewPager.setAdapter(new MyPagerAdapter());
+        viewPager.setAdapter(new HomeAdminFragment.MyPagerAdapter());
         pointGroup.getChildAt(0).setBackgroundResource(R.drawable.point_focused);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
@@ -293,33 +275,27 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.home_repairs:
-                Intent intent = new Intent(HomeFragment.this.getActivity(), RepairsActivity.class);
+            case R.id.home_admin_repairs:
+                Intent intent = new Intent(HomeAdminFragment.this.getActivity(), RepairsActivity.class);
                 intent.putExtra("username", username);
                 startActivity(intent);
                 break;
-            case R.id.home_pay:
-                Intent intent5 = new Intent(HomeFragment.this.getActivity(), PayActivity.class);
+            case R.id.home_admin_pay:
+                Intent intent5 = new Intent(HomeAdminFragment.this.getActivity(), PayActivity.class);
                 intent5.putExtra("username", username);
                 startActivity(intent5);
                 break;
-            case R.id.home_parking:
-//                Toast.makeText(getContext(), "该功能尚未开发，敬请期待！",Toast.LENGTH_SHORT).show();
-                Intent intent9 = new Intent(HomeFragment.this.getActivity(), TestActivity.class);
-                intent9.putExtra("username", username);
-                startActivity(intent9);
-                break;
-            case R.id.home_announce:
-                Intent intent4 = new Intent(HomeFragment.this.getActivity(), AnnounceActivity.class);
+            case R.id.home_admin_announce:
+                Intent intent4 = new Intent(HomeAdminFragment.this.getActivity(), AnnounceActivity.class);
                 intent4.putExtra("username", username);
                 startActivity(intent4);
                 break;
-            case R.id.home_advice:
-                Intent intent2 = new Intent(HomeFragment.this.getActivity(), AdviceActivity.class);
+            case R.id.home_admin_advice:
+                Intent intent2 = new Intent(HomeAdminFragment.this.getActivity(), AdviceActivity.class);
                 intent2.putExtra("username", username);
                 startActivity(intent2);
                 break;
-            case R.id.home_contact:
+            case R.id.home_admin_contact:
                 AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getContext());
                 alertBuilder.setTitle("联系方式");
                 alertBuilder.setItems(items, new DialogInterface.OnClickListener() {
@@ -345,36 +321,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 alertDialog = alertBuilder.create();
                 alertDialog.show();
                 break;
-            case R.id.home_moment:
-                Intent intent3 = new Intent(HomeFragment.this.getActivity(), MomentAddActivity.class);
+            case R.id.home_admin_moment:
+                Intent intent3 = new Intent(HomeAdminFragment.this.getActivity(), MomentAddActivity.class);
                 intent3.putExtra("username", username);
                 startActivity(intent3);
                 break;
-            case R.id.home_forum:
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.hide(new HomeFragment()).show(new DashboardFragment()).commit();
-                fragmentTransaction.hide(new HomeFragment()).replace(R.id.nav_host_fragment, new DashboardFragment()).commit();
-                break;
-            case R.id.home_friends:
-                FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
-                fragmentTransaction1.hide(new HomeFragment()).replace(R.id.nav_host_fragment, new NotificationsFragment()).commit();
-                break;
-            case R.id.home_consult:
-                Intent intent6 = new Intent(HomeFragment.this.getActivity(), ConsultActivity.class);
-                intent6.putExtra("username", username);
-                startActivity(intent6);
-                break;
             case R.id.home_surroundings:
-                Intent intent7 = new Intent(HomeFragment.this.getActivity(), SurroundingsActivity.class);
+                Intent intent7 = new Intent(HomeAdminFragment.this.getActivity(), SurroundingsActivity.class);
                 intent7.putExtra("username", username);
                 startActivity(intent7);
-                break;
-            case R.id.home_vote:
-                Intent intent8 = new Intent(HomeFragment.this.getActivity(), VoteActivity.class);
-                intent8.putExtra("username", username);
-                startActivity(intent8);
                 break;
         }
     }

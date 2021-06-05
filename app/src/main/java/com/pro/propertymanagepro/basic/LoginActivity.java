@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.pro.propertymanagepro.CentralActivity;
+import com.pro.propertymanagepro.CentralAdminActivity;
 import com.pro.propertymanagepro.MainActivity;
 import com.pro.propertymanagepro.R;
 
@@ -91,8 +92,14 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
                         //跳转至主界面
                         Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, CentralActivity.class);
+                        Intent intent2 = new Intent(LoginActivity.this, CentralAdminActivity.class);
                         intent.putExtra("username", username);
-                        startActivity(intent);
+                        intent2.putExtra("username", username);
+                        if(username.equals("aa")){
+                            startActivity(intent2);
+                        }else{
+                            startActivity(intent);
+                        }
                         finish();
                         break;
                     case 204:

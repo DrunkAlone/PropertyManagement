@@ -68,6 +68,11 @@ public class DBHelper extends SQLiteOpenHelper {
             "type varchar(20)," +
             "amount int," +
             "lastDate varchar(50))";
+    private final static String createTable9 = "create table " + "Administrator" +
+            "(id integer primary key AUTOINCREMENT," +
+            "username varchar(40)," +
+            "name varchar(30)," +
+            "location varchar(255))";
 
     public DBHelper(Context context){
         super(context, db_name, null, version);
@@ -83,6 +88,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(createTable6);
         db.execSQL(createTable7);
         db.execSQL(createTable8);
+        db.execSQL(createTable9);
     }
 
     @Override
@@ -95,6 +101,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Vote");
         db.execSQL("DROP TABLE IF EXISTS Orders");
         db.execSQL("DROP TABLE IF EXISTS Deposit");
+        db.execSQL("DROP TABLE IF EXISTS Administrator");
         onCreate(db);
     }
 }
