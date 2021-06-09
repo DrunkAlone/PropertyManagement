@@ -11,8 +11,12 @@ public class Repairs implements Serializable {
     private String name;
     private String phone;
     private String description;
+    private int distribute_status;
+    private int handle_status;
+    private String distributer;
+    private String handler;
 
-    public Repairs(int id, String username, String project_name, String date, String room, String name, String phone, String description) {
+    public Repairs(int id, String username, String project_name, String date, String room, String name, String phone, String description, int distribute_status, int handle_status, String distributer, String handler) {
         this.id = id;
         this.username = username;
         this.project_name = project_name;
@@ -21,6 +25,10 @@ public class Repairs implements Serializable {
         this.name = name;
         this.phone = phone;
         this.description = description;
+        this.distribute_status = distribute_status;
+        this.handle_status = handle_status;
+        this.distributer = distributer;
+        this.handler = handler;
     }
 
     public int getId() {
@@ -87,6 +95,38 @@ public class Repairs implements Serializable {
         this.description = description;
     }
 
+    public int getDistribute_status() {
+        return distribute_status;
+    }
+
+    public void setDistribute_status(int distribute_status) {
+        this.distribute_status = distribute_status;
+    }
+
+    public int getHandle_status() {
+        return handle_status;
+    }
+
+    public void setHandle_status(int handle_status) {
+        this.handle_status = handle_status;
+    }
+
+    public String getDistributer() {
+        return distributer;
+    }
+
+    public void setDistributer(String distributer) {
+        this.distributer = distributer;
+    }
+
+    public String getHandler() {
+        return handler;
+    }
+
+    public void setHandler(String handler) {
+        this.handler = handler;
+    }
+
     @Override
     public String toString() {
         return "Repairs{" +
@@ -98,6 +138,10 @@ public class Repairs implements Serializable {
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", description='" + description + '\'' +
+                ", distribute_status=" + distribute_status +
+                ", handle_status=" + handle_status +
+                ", distributer='" + distributer + '\'' +
+                ", handler='" + handler + '\'' +
                 '}';
     }
 

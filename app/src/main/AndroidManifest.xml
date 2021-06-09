@@ -108,7 +108,20 @@
         <activity android:name=".basic.VoteDetailActivity"/>
         <activity android:name=".basic.TestActivity"/>
 
+        <activity android:name=".admin.AdminAnnounceActivity"/>
+        <activity android:name=".admin.AdminLocationActivity"/>
+        <activity android:name=".admin.AdminPayActivity"/>
+        <activity android:name=".admin.AdminPayDetailActivity"/>
+        <activity android:name=".admin.AdminRepairsActivity"/>
+        <activity android:name=".admin.AdminRepairsDetailActivity"/>
+        <activity android:name=".admin.AdminAdviceActivity"/>
+        <activity android:name=".admin.AdminAdviceDetailActivity"/>
+        <activity android:name=".admin.AdminUserActivity"/>
+        <activity android:name=".admin.AdminUserDetailActivity"/>
+        <activity android:name=".admin.AdminVoteActivity"/>
+
         <activity android:name=".CentralAdminActivity"/>
+        <activity android:name=".CentralStaffActivity"/>
         <activity
             android:name=".CentralActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />

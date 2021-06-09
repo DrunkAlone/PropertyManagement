@@ -10,11 +10,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private final static String createTable1 = "create table " + "User" +
             "(id integer primary key AUTOINCREMENT," +
+            "auth integer," +
             "username varchar(20)," +
             "pwd varchar(30)," +
+            "name varchar(20)," +
             "age integer," +
             "gender integer," +
-            "roomNo integer)";
+            "roomNo integer," +
+            "phone varchar(11))";
     private final static String createTable2 = "create table " + "Repairs" +
             "(id integer primary key AUTOINCREMENT," +
             "username varchar(20)," +
@@ -23,7 +26,11 @@ public class DBHelper extends SQLiteOpenHelper {
             "room varchar(20)," +
             "name varchar(10)," +
             "phone varchar(11)," +
-            "description varchar(255))";
+            "description varchar(255)," +
+            "distribute_status int," +
+            "handle_status int," +
+            "distributer varchar(40)," +
+            "handler varchar(40))";
     private final static String createTable3 = "create table " + "Moment" +
             "(id integer primary key AUTOINCREMENT," +
             "username varchar(20)," +
@@ -73,6 +80,12 @@ public class DBHelper extends SQLiteOpenHelper {
             "username varchar(40)," +
             "name varchar(30)," +
             "location varchar(255))";
+    private final static String createTable10 = "create table " + "Staff" +
+            "(id integer primary key AUTOINCREMENT," +
+            "username varchar(40)," +
+            "name varchar(30)," +
+            "taskList varchar(255)," +
+            "phone varchar(11))";
 
     public DBHelper(Context context){
         super(context, db_name, null, version);
@@ -89,6 +102,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(createTable7);
         db.execSQL(createTable8);
         db.execSQL(createTable9);
+        db.execSQL(createTable10);
     }
 
     @Override
@@ -102,6 +116,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Orders");
         db.execSQL("DROP TABLE IF EXISTS Deposit");
         db.execSQL("DROP TABLE IF EXISTS Administrator");
+        db.execSQL("DROP TABLE IF EXISTS Staff");
         onCreate(db);
     }
 }

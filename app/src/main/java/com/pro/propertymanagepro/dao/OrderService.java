@@ -59,6 +59,26 @@ public class OrderService {
         }
     }
 
+    public Order getOrderByID(int id){
+        String sql = "select * from Orders where id = ?";
+        Cursor cursor = sdb.rawQuery(sql, new String[]{String.valueOf(id)});
+        if(cursor.moveToNext()){
+            String username = cursor.getString(cursor.getColumnIndex("username"));
+            String orderID = cursor.getString(cursor.getColumnIndex("orderID"));
+            int amount = cursor.getInt(cursor.getColumnIndex("amount"));
+            String type = cursor.getString(cursor.getColumnIndex("type"));
+            String payDate = cursor.getString(cursor.getColumnIndex("payDate"));
+            String status = cursor.getString(cursor.getColumnIndex("status"));
+            Order order = new Order(id, orderID, username, amount, type, payDate, status);
+            cursor.close();
+            return order;
+        }
+        else{
+            Log.e("tag", "没有符合条件的结果！");
+            return null;
+        }
+    }
+
     public List<Order> getAllOrders(){
         List<Order> list= new ArrayList<Order>();
         Cursor cursor = sdb.query("Orders", null, null, null, null, null, "id DESC");

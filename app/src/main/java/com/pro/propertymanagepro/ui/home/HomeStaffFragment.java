@@ -25,13 +25,6 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.pro.propertymanagepro.R;
-import com.pro.propertymanagepro.admin.AdminAdviceActivity;
-import com.pro.propertymanagepro.admin.AdminAnnounceActivity;
-import com.pro.propertymanagepro.admin.AdminLocationActivity;
-import com.pro.propertymanagepro.admin.AdminPayActivity;
-import com.pro.propertymanagepro.admin.AdminRepairsActivity;
-import com.pro.propertymanagepro.admin.AdminRepairsDetailActivity;
-import com.pro.propertymanagepro.admin.AdminVoteActivity;
 import com.pro.propertymanagepro.basic.AdviceActivity;
 import com.pro.propertymanagepro.basic.AnnounceActivity;
 import com.pro.propertymanagepro.basic.ConsultActivity;
@@ -41,8 +34,6 @@ import com.pro.propertymanagepro.basic.RepairsActivity;
 import com.pro.propertymanagepro.basic.SurroundingsActivity;
 import com.pro.propertymanagepro.basic.TestActivity;
 import com.pro.propertymanagepro.basic.VoteActivity;
-import com.pro.propertymanagepro.dao.AdministratorService;
-import com.pro.propertymanagepro.entity.Administrator;
 import com.pro.propertymanagepro.ui.dashboard.DashboardFragment;
 import com.pro.propertymanagepro.ui.notifications.NotificationsFragment;
 import com.pro.propertymanagepro.util.PermissionActivity;
@@ -51,34 +42,12 @@ import java.util.ArrayList;
 
 import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
 
-public class HomeAdminFragment extends Fragment implements View.OnClickListener{
-    private HomeViewModel homeViewModel;
+public class HomeStaffFragment extends Fragment implements View.OnClickListener{
 
-    private TextView tv_repairs;
-    private TextView tv_pay;
-    private TextView tv_vehicle;
-    private TextView tv_annouce;
-    private TextView tv_advice;
-    private TextView tv_contact;
-    private TextView tv_push;
-    private TextView tv_friend;
-    private TextView tv_forum;
-    private TextView tv_consult;
-    private TextView tv_surroundings;
-    private TextView tv_vote;
-
-    private ImageView repairs;
-    private ImageView pay;
-    private ImageView vehicle;
-    private ImageView announce;
-    private ImageView advice;
-    private ImageView user;
-    private ImageView push;
-    private ImageView friend;
-    private ImageView forum;
-    private ImageView consult;
-    private ImageView surroundings;
-    private ImageView vote;
+    private ImageView iv_repairs;
+    private ImageView iv_order;
+    private ImageView iv_myorders;
+    private ImageView iv_announce;
 
     private String username;
 
@@ -110,35 +79,19 @@ public class HomeAdminFragment extends Fragment implements View.OnClickListener{
     //默认初始化
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home_admin, container, false);
+        View root = inflater.inflate(R.layout.fragment_home_staff, container, false);
+        iv_repairs = root.findViewById(R.id.home_staff_repairs);
+        iv_order = root.findViewById(R.id.home_staff_order);
+        iv_myorders = root.findViewById(R.id.home_staff_myorders);
+        iv_announce = root.findViewById(R.id.home_staff_announce);
 
-        repairs = root.findViewById(R.id.home_admin_repairs);
-        pay = root.findViewById(R.id.home_admin_pay);
-        announce = root.findViewById(R.id.home_admin_announce);
-        advice = root.findViewById(R.id.home_admin_advice);
-        user = root.findViewById(R.id.home_admin_user);
-        push = root.findViewById(R.id.home_admin_moment);
-        surroundings = root.findViewById(R.id.home_admin_surroundings);
-        vote = root.findViewById(R.id.home_admin_vote);
-
-        repairs.setOnClickListener(this);
-        pay.setOnClickListener(this);
-        announce.setOnClickListener(this);
-        advice.setOnClickListener(this);
-        user.setOnClickListener(this);
-        push.setOnClickListener(this);
-        surroundings.setOnClickListener(this);
-        vote.setOnClickListener(this);
+        iv_repairs.setOnClickListener(this);
+        iv_order.setOnClickListener(this);
+        iv_myorders.setOnClickListener(this);
+        iv_announce.setOnClickListener(this);
 
         Bundle bundle1 = getActivity().getIntent().getExtras();
         username = bundle1.getString("username");
-
-        //新增一个管理员
-//        AdministratorService administratorService = new AdministratorService(this.getContext());
-//        Administrator administrator = new Administrator(1, username, "李刚", "山东省青岛市黄岛区和平小区3-4栋的房屋的维护与修缮管理以及绿化即车辆治安的管理。");
-//        administratorService.addAdministrator(administrator);
 
         //设置轮播图
         viewPager = root.findViewById(R.id.viewpager);
@@ -171,7 +124,7 @@ public class HomeAdminFragment extends Fragment implements View.OnClickListener{
             pointGroup.addView(point);
         }
 
-        viewPager.setAdapter(new HomeAdminFragment.MyPagerAdapter());
+        viewPager.setAdapter(new HomeStaffFragment.MyPagerAdapter());
         pointGroup.getChildAt(0).setBackgroundResource(R.drawable.point_focused);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
@@ -290,42 +243,25 @@ public class HomeAdminFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.home_admin_repairs:
-                Intent intent = new Intent(HomeAdminFragment.this.getActivity(), AdminRepairsActivity.class);
+            case R.id.home_staff_repairs:
+                Intent intent = new Intent(HomeStaffFragment.this.getActivity(), RepairsActivity.class);
                 intent.putExtra("username", username);
                 startActivity(intent);
                 break;
-            case R.id.home_admin_pay:
-                Intent intent5 = new Intent(HomeAdminFragment.this.getActivity(), AdminPayActivity.class);
+            case R.id.home_staff_order:
+                Intent intent5 = new Intent(HomeStaffFragment.this.getActivity(), PayActivity.class);
                 intent5.putExtra("username", username);
                 startActivity(intent5);
                 break;
-            case R.id.home_admin_announce:
-                Intent intent4 = new Intent(HomeAdminFragment.this.getActivity(), AdminAnnounceActivity.class);
+            case R.id.home_staff_announce:
+                Intent intent4 = new Intent(HomeStaffFragment.this.getActivity(), AnnounceActivity.class);
                 intent4.putExtra("username", username);
                 startActivity(intent4);
                 break;
-            case R.id.home_admin_advice:
-                Intent intent2 = new Intent(HomeAdminFragment.this.getActivity(), AdminAdviceActivity.class);
+            case R.id.home_staff_myorders:
+                Intent intent2 = new Intent(HomeStaffFragment.this.getActivity(), AdviceActivity.class);
                 intent2.putExtra("username", username);
                 startActivity(intent2);
-                break;
-            case R.id.home_admin_user:
-                break;
-            case R.id.home_admin_moment:
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.hide(new HomeFragment()).replace(R.id.nav_host_fragment_admin, new DashboardFragment()).commit();
-                break;
-            case R.id.home_admin_surroundings:
-                Intent intent7 = new Intent(HomeAdminFragment.this.getActivity(), AdminLocationActivity.class);
-                intent7.putExtra("username", username);
-                startActivity(intent7);
-                break;
-            case R.id.home_admin_vote:
-                Intent intent8 = new Intent(HomeAdminFragment.this.getActivity(), AdminVoteActivity.class);
-                intent8.putExtra("username", username);
-                startActivity(intent8);
                 break;
         }
     }

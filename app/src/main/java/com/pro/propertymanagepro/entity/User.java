@@ -4,19 +4,25 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private int id;
-    private String name;
+    private int auth;
+    private String username;
     private String pwd;
+    private String name;
     private int age;
     private int gender;
     private int roomNo;
+    private String phone;
 
-    public User(int id, String name, String pwd, int age, int gender, int roomNo) {
+    public User(int id, int auth, String username, String pwd, String name, int age, int gender, int roomNo, String phone) {
         this.id = id;
-        this.name = name;
+        this.auth = auth;
+        this.username = username;
         this.pwd = pwd;
+        this.name = name;
         this.age = age;
         this.gender = gender;
         this.roomNo = roomNo;
+        this.phone = phone;
     }
     public int getId() {
         return id;
@@ -25,6 +31,10 @@ public class User implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public int getAuth() { return auth; }
+
+    public void setAuth(int auth) { this.auth = auth; }
 
     public String getName() {
         return name;
@@ -40,6 +50,14 @@ public class User implements Serializable {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getAge() {
@@ -66,15 +84,26 @@ public class User implements Serializable {
         this.roomNo = roomNo;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", auth='" + auth +
+                ", username='" + username + '\'' +
                 ", pwd='" + pwd + '\'' +
+                ", name=" + name + '\'' +
                 ", age=" + age +
                 ", gender=" + gender +
                 ", roomNo=" + roomNo +
+                ", phone=" + phone +
                 '}';
     }
 

@@ -14,6 +14,7 @@ import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.pro.propertymanagepro.CentralActivity;
 import com.pro.propertymanagepro.CentralAdminActivity;
+import com.pro.propertymanagepro.CentralStaffActivity;
 import com.pro.propertymanagepro.MainActivity;
 import com.pro.propertymanagepro.R;
 
@@ -93,10 +94,14 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
                         Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, CentralActivity.class);
                         Intent intent2 = new Intent(LoginActivity.this, CentralAdminActivity.class);
+                        Intent intent3 = new Intent(LoginActivity.this, CentralStaffActivity.class);
                         intent.putExtra("username", username);
                         intent2.putExtra("username", username);
+                        intent3.putExtra("username", username);
                         if(username.equals("aa")){
                             startActivity(intent2);
+                        }else if(username.equals("cd")){
+                            startActivity(intent3);
                         }else{
                             startActivity(intent);
                         }

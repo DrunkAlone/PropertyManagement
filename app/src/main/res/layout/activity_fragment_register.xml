@@ -13,8 +13,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/register_l1"
-        android:paddingTop="30dp"
-        android:layout_marginBottom="20dp"
+        android:paddingTop="20dp"
+        android:layout_marginBottom="10dp"
         android:text="注册新用户"
         android:typeface="monospace"
         android:textSize="25sp"
@@ -79,7 +79,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/register_l2"
-        app:layout_constraintBottom_toTopOf="@id/register_l4"
+        app:layout_constraintBottom_toTopOf="@id/register_l7"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="50dp">
@@ -99,13 +99,69 @@
             style="@style/em_login_et_input"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/register_l7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/register_l8"
+        app:layout_constraintBottom_toBottomOf="@id/register_l3"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/register_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:hint="姓    名："
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/register_name"
+            style="@style/em_login_et_input"
+            android:layout_width="200dp"
+            android:background="@drawable/layer"
+            android:hint="请输入姓名"
+            app:layout_constraintVertical_bias="0.25" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/register_l8"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/register_l4"
+        app:layout_constraintBottom_toBottomOf="@id/register_l7"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/register_tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:hint="手机号："
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/register_phone"
+            style="@style/em_login_et_input"
+            android:layout_width="200dp"
+            android:background="@drawable/layer"
+            android:inputType="phone"
+            android:hint="请输入手机号"
+            app:layout_constraintVertical_bias="0.25" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/register_l4"
         android:layout_marginRight="50dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/register_l3"
+        app:layout_constraintBottom_toBottomOf="@id/register_l8"
         app:layout_constraintBottom_toTopOf="@id/register_l5"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -191,6 +247,7 @@
             android:id="@+id/register_roomNo"
             app:layout_constraintVertical_bias="0.45"
             android:layout_width="150dp"
+            android:inputType="number"
             android:hint="请输入房号"
             android:background="@drawable/layer"
             style="@style/em_login_et_input" />

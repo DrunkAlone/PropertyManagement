@@ -19,6 +19,8 @@ import com.pro.propertymanagepro.R;
 import com.pro.propertymanagepro.dao.RepairsService;
 import com.pro.propertymanagepro.entity.Repairs;
 
+import java.util.Calendar;
+
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
 
@@ -63,6 +65,8 @@ public class RepairsActivity extends AppCompatActivity implements View.OnClickLi
         et_description = findViewById(R.id.repairs_description);
         bt_commit = findViewById(R.id.repairs_commit);
 
+        et_date.setText(getTime());
+
         bt_commit.setOnClickListener(this);
 
         //设置字体
@@ -82,7 +86,7 @@ public class RepairsActivity extends AppCompatActivity implements View.OnClickLi
             boolean isEmpty = project_name.equals("") || date.equals("") || room.equals("") || name.equals("") ||
                 phone.equals("") || description.equals("");
             if(!isEmpty){
-                Repairs repairs = new Repairs(1, username, project_name, date, room, name, phone, description);
+                Repairs repairs = new Repairs(1, username, project_name, date, room, name, phone, description, 0, 0, "无", "无");
                 RepairsService repairsService = new RepairsService(RepairsActivity.this);
                 if(repairsService.addRepairs(repairs)){
                     Toast.makeText(RepairsActivity.this, "成功提交！", Toast.LENGTH_SHORT).show();
@@ -96,6 +100,12 @@ public class RepairsActivity extends AppCompatActivity implements View.OnClickLi
                 Toast.makeText(RepairsActivity.this, "请完善报修信息！", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public String getTime(){
+        Calendar calendar = Calendar.getInstance();
+        String now = calendar.get(Calendar.YEAR)+ "年" + (calendar.get(Calendar.MONTH)+1) + "月" + calendar.get(Calendar.DAY_OF_MONTH)+ "日";
+        return now;
     }
 
     @Override

@@ -22,13 +22,16 @@ public class UserService {
     }
 
     public Boolean addUser(User user){
-        String sql = "insert into User(username, pwd, age, gender, roomNo) values(?,?,?,?,?)";
+        String sql = "insert into User(auth, username, pwd, name, age, gender, roomNo, phone) values(?,?,?,?,?,?,?,?)";
         Object []ob = {
-                user.getName(),
+                user.getAuth(),
+                user.getUsername(),
                 user.getPwd(),
+                user.getName(),
                 user.getAge(),
                 user.getGender(),
-                user.getRoomNo()
+                user.getRoomNo(),
+                user.getPhone()
         };
         try{
             sdb.execSQL(sql, ob);
@@ -45,7 +48,7 @@ public class UserService {
             values.put("age", user.getAge());
             values.put("gender", user.getGender());
             values.put("roomNo", user.getRoomNo());
-            sdb.update("User", values, "username = ?", new String[]{user.getName()});
+            sdb.update("User", values, "username = ?", new String[]{user.getUsername()});
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -62,12 +65,14 @@ public class UserService {
         Cursor cursor = sdb.rawQuery(sql, new String[]{username});
         if(cursor.moveToNext()){
             int id = cursor.getInt(cursor.getColumnIndex("id"));
-            String name = cursor.getString(cursor.getColumnIndex("username"));
+            int auth = cursor.getInt(cursor.getColumnIndex("auth"));
             String password = cursor.getString(cursor.getColumnIndex("pwd"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
             int age = cursor.getInt(cursor.getColumnIndex("age"));
             int gender = cursor.getInt(cursor.getColumnIndex("gender"));
             int roomNo = cursor.getInt(cursor.getColumnIndex("roomNo"));
-            User user = new User(id, name, password, age, gender, roomNo);
+            String phone = cursor.getString(cursor.getColumnIndex("phone"));
+            User user = new User(id, auth, username, password, name, age, gender, roomNo, phone);
             cursor.close();
             return user;
         }
@@ -81,12 +86,15 @@ public class UserService {
         String sql = "select * from User where id = ?";
         Cursor cursor = sdb.rawQuery(sql, new String[]{String.valueOf(id)});
         if(cursor.moveToNext()){
-            String name = cursor.getString(cursor.getColumnIndex("username"));
+            int auth = cursor.getInt(cursor.getColumnIndex("auth"));
+            String username = cursor.getString(cursor.getColumnIndex("username"));
             String password = cursor.getString(cursor.getColumnIndex("pwd"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
             int age = cursor.getInt(cursor.getColumnIndex("age"));
             int gender = cursor.getInt(cursor.getColumnIndex("gender"));
             int roomNo = cursor.getInt(cursor.getColumnIndex("roomNo"));
-            User user = new User(id, name, password, age, gender, roomNo);
+            String phone = cursor.getString(cursor.getColumnIndex("phone"));
+            User user = new User(id, auth, username, password, name, age, gender, roomNo, phone);
             cursor.close();
             return user;
         }
@@ -101,12 +109,16 @@ public class UserService {
         Cursor cursor = sdb.query("User", null, null, null, null, null, "username DESC");
         while(cursor.moveToNext()){
             int id = cursor.getInt(cursor.getColumnIndex("id"));
-            String name = cursor.getString(cursor.getColumnIndex("username"));
+            int auth = cursor.getInt(cursor.getColumnIndex("auth"));
+            String username = cursor.getString(cursor.getColumnIndex("username"));
             String password = cursor.getString(cursor.getColumnIndex("pwd"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
             int age = cursor.getInt(cursor.getColumnIndex("age"));
             int gender = cursor.getInt(cursor.getColumnIndex("gender"));
             int roomNo = cursor.getInt(cursor.getColumnIndex("roomNo"));
-            list.add(new User(id, name, password, age, gender, roomNo));
+            String phone = cursor.getString(cursor.getColumnIndex("phone"));
+            User user = new User(id, auth, username, password, name, age, gender, roomNo, phone);
+            list.add(user);
         }
         return list;
     }

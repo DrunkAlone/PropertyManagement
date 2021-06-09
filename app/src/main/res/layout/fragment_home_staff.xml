@@ -4,14 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/base_F5F5F5"
     android:orientation="vertical">
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="400dp"-->
-    <!--        android:layout_height="198dp">-->
-    <!--        <ImageView-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:src="@drawable/background"/>-->
-    <!--    </LinearLayout>-->
 
     <!-- 轮播导航 -->
     <RelativeLayout
@@ -87,7 +79,7 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/home_admin_repairs"
+                android:id="@+id/home_staff_repairs"
                 android:layout_marginTop="10dp"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
@@ -110,7 +102,7 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/home_admin_pay"
+                android:id="@+id/home_staff_order"
                 android:layout_marginTop="10dp"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
@@ -119,12 +111,12 @@
                 android:background="@drawable/icon_pay_select"
                 android:onClick="onClick" />
             <TextView
-                android:id="@+id/home_tv_pay"
+                android:id="@+id/home_tv_order"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginVertical="10dp"
-                android:text="缴费管理"/>
+                android:text="在线抢单"/>
         </LinearLayout>
         <View style="@style/vertical_dotted_line_style"/>
         <LinearLayout
@@ -133,7 +125,7 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/home_admin_surroundings"
+                android:id="@+id/home_staff_myorders"
                 android:layout_marginTop="10dp"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
@@ -142,12 +134,12 @@
                 android:clickable="true"
                 android:onClick="onClick" />
             <TextView
-                android:id="@+id/home_tv_surroundings"
+                android:id="@+id/home_tv_myorders"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginVertical="10dp"
-                android:text="我的管辖"/>
+                android:text="我的任务"/>
         </LinearLayout>
         <View style="@style/vertical_dotted_line_style"/>
         <LinearLayout
@@ -156,7 +148,7 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/home_admin_announce"
+                android:id="@+id/home_staff_announce"
                 android:layout_marginTop="10dp"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
@@ -170,7 +162,7 @@
                 android:layout_height="20dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginVertical="10dp"
-                android:text="发布公告"/>
+                android:text="通知公告"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -180,107 +172,5 @@
         android:layout_height="1dp"
         android:layerType="software"
         android:background="@drawable/horizontal_dotted_line" />
-    <LinearLayout
-        android:layout_margin="3dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_margin="10dp"
-            android:orientation="vertical"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/home_admin_advice"
-                android:layout_marginTop="10dp"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_gravity="center"
-                android:background="@drawable/icon_advice_select"
-                android:clickable="true"
-                android:onClick="onClick" />
-            <TextView
-                android:id="@+id/home_tv_advice"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginVertical="10dp"
-                android:text="投诉管理"/>
-        </LinearLayout>
-        <View style="@style/vertical_dotted_line_style"/>
-        <LinearLayout
-            android:layout_margin="10dp"
-            android:orientation="vertical"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/home_admin_user"
-                android:layout_marginTop="10dp"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_gravity="center"
-                android:background="@drawable/icon_friends_select"
-                android:clickable="true"
-                android:onClick="onClick" />
-            <TextView
-                android:id="@+id/home_tv_user"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginVertical="10dp"
-                android:text="用户管理"/>
-        </LinearLayout>
-        <View style="@style/vertical_dotted_line_style"/>
-        <LinearLayout
-            android:layout_margin="10dp"
-            android:orientation="vertical"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/home_admin_moment"
-                android:layout_marginTop="10dp"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_gravity="center"
-                android:background="@drawable/icon_message_select"
-                android:clickable="true"
-                android:onClick="onClick" />
-            <TextView
-                android:id="@+id/home_tv_moment"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginVertical="10dp"
-                android:text="社区论坛"/>
-        </LinearLayout>
-        <View style="@style/vertical_dotted_line_style"/>
-        <LinearLayout
-            android:layout_margin="10dp"
-            android:orientation="vertical"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/home_admin_vote"
-                android:layout_marginTop="10dp"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:layout_gravity="center"
-                android:background="@drawable/icon_vote_select"
-                android:clickable="true"
-                android:onClick="onClick" />
-            <TextView
-                android:id="@+id/home_tv_vote"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginVertical="10dp"
-                android:text="发布投票"/>
-        </LinearLayout>
-    </LinearLayout>
-    <!-- 虚线分割 -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layerType="software"
-        android:background="@drawable/horizontal_dotted_line" />
+
 </LinearLayout>

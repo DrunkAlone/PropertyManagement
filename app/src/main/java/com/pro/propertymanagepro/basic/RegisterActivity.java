@@ -31,6 +31,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText et_username;
     private EditText et_password;
     private EditText et_repassword;
+    private EditText et_name;
+    private EditText et_phone;
     private EditText et_age;
     private EditText et_roomNo;
     private RadioGroup rg_gender;
@@ -42,6 +44,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private String username;
     private String password;
     private String repassword;
+    private String name;
+    private String phone;
     private int age;
     private int gender;
     private int roomNo;
@@ -59,6 +63,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         et_username = findViewById(R.id.register_username);
         et_password = findViewById(R.id.register_password);
         et_repassword = findViewById(R.id.register_repassword);
+        et_name = findViewById(R.id.register_name);
+        et_phone = findViewById(R.id.register_phone);
         et_age = findViewById(R.id.register_age);
         et_roomNo = findViewById(R.id.register_roomNo);
 
@@ -81,10 +87,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         username = et_username.getText().toString().trim();
         password = et_password.getText().toString().trim();
         repassword = et_repassword.getText().toString().trim();
+        name = et_name.getText().toString().trim();
+        phone = et_phone.getText().toString().trim();
         age = Integer.parseInt(et_age.getText().toString());
         roomNo = Integer.parseInt(et_roomNo.getText().toString());
         gender = rb_male.isChecked() ? 1 : 0;
         boolean isEmpty = username.equals("") || password.equals("") || repassword.equals("") ||
+            name.equals("") || phone.equals("") ||
             age == 0 || roomNo == 0;
         if(password.equals(repassword)){
             if (!isEmpty) {
@@ -96,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 EMClient.getInstance().createAccount(username, password);
                                 //添加用户信息至数据库
                                 UserService userService = new UserService(RegisterActivity.this);
-                                User user = new User(1, username, password, age, gender, roomNo);
+                                User user = new User(1, 0, username, password, name, age, gender, roomNo, phone);
                                 if(userService.addUser(user)){
                                     System.out.println(userService.getUsers());
                                     show(200);

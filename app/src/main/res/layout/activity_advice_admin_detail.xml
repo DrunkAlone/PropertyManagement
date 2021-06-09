@@ -6,104 +6,100 @@
     android:layout_margin="30dp"
     android:background="@drawable/layer"
     android:orientation="vertical">
-    <TextView
-        android:id="@+id/repairs_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="在线报修"
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"
-        />
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:layout_marginHorizontal="40dp"-->
-<!--        android:orientation="horizontal">-->
-<!--        <TextView-->
-<!--            android:id="@+id/repairs_id"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="报修编号："-->
-<!--            android:textSize="15sp"-->
-<!--            />-->
-<!--    </LinearLayout>-->
+    <RelativeLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorAccent">
+        <TextView
+            android:id="@+id/info_title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textColor="#F7F7F7"
+            android:textStyle="bold"
+            android:text="投诉管理"
+            />
+    </RelativeLayout>
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="40dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/myrepairs_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="编号："
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/advice_admin_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="编号"
+            android:textSize="15sp"
+            android:layout_marginRight="50dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp">
-            <TextView
-            android:id="@+id/repairs_tv_project_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="报修名称："
-            android:textSize="15sp"
-            />
-            <EditText
-                android:id="@+id/repairs_et_project_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="在线报修类别"
-                android:textSize="15sp"
-                android:layout_marginRight="50dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:orientation="horizontal">
         <TextView
-            android:id="@+id/repairs_tv_date"
+            android:id="@+id/myrepairs_tv_project_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="报修日期："
+            android:text="类型："
             android:textSize="15sp"
             />
-        <EditText
-            android:id="@+id/repairs_et_date"
+        <TextView
+            android:id="@+id/advice_admin_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请选择报修日期"
+            android:hint="投诉或建议"
             android:textSize="15sp"
             android:layout_marginRight="50dp"/>
     </LinearLayout>
     <LinearLayout
+        android:layout_marginVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:orientation="horizontal">
         <TextView
-            android:id="@+id/repairs_tv_room"
+            android:id="@+id/myrepairs_tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="房间号："
+            android:text="用户名："
             android:textSize="15sp"
             />
-        <EditText
-            android:id="@+id/repairs_et_room"
+        <TextView
+            android:id="@+id/advice_admin_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="报修房间号"
+            android:hint="用户名"
             android:textSize="15sp"
             android:layout_marginRight="50dp"/>
     </LinearLayout>
     <LinearLayout
+        android:layout_marginVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:orientation="horizontal">
         <TextView
-            android:id="@+id/repairs_tv_name"
+            android:id="@+id/myrepairs_tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="联系人："
             android:textSize="15sp"
             />
-        <EditText
-            android:id="@+id/repairs_et_name"
+        <TextView
+            android:id="@+id/advice_admin_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="联系人姓名"
@@ -111,30 +107,39 @@
             android:layout_marginRight="50dp"/>
     </LinearLayout>
     <LinearLayout
+        android:layout_marginVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:orientation="horizontal">
         <TextView
-            android:id="@+id/repairs_tv_phone"
+            android:id="@+id/myrepairs_tv_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="联系电话："
             android:textSize="15sp"
             />
-        <EditText
-            android:id="@+id/repairs_et_phone"
+        <TextView
+            android:id="@+id/advice_admin_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="联系人手机号"
             android:textSize="15sp"
-            android:inputType="phone"
             android:layout_marginRight="50dp"/>
     </LinearLayout>
-    <EditText
-        android:id="@+id/repairs_description"
+    <TextView
+        android:layout_marginVertical="10dp"
+        android:layout_marginLeft="40dp"
+        android:id="@+id/myrepairs_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="详情描述："
+        android:textSize="15sp"
+        />
+    <TextView
+        android:id="@+id/advice_admin_content"
         android:layout_width="fill_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:hint="报修详情描述"
         android:gravity="top"
         android:enabled="true"
@@ -142,18 +147,17 @@
         android:minLines="8"
         android:maxLines="10"
         android:scrollbars="vertical"
-        android:background="@drawable/edittext_border"
         android:textSize="15sp"
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="40dp"
         />
     <Button
-        android:id="@+id/repairs_commit"
+        android:id="@+id/advice_admin_back"
         android:layout_width="200dp"
         android:layout_gravity="center_horizontal"
         android:layout_height="40dp"
         android:background="@drawable/loginbutton"
-        android:text="提交"
+        android:text="返回"
         android:textSize="20sp"
         android:textColor="@color/base_F5F5F5"
         android:onClick="onClick"

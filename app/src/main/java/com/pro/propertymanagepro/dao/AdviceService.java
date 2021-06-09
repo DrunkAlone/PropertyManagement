@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.pro.propertymanagepro.entity.Advice;
 import com.pro.propertymanagepro.util.DBHelper;
@@ -51,6 +52,24 @@ public class AdviceService {
         }
         cursor.close();
         return list;
+    }
+
+    public Advice getAdviceByID(int id){
+        String sql = "select * from Advice where id = ?";
+        Cursor cursor = sdb.rawQuery(sql, new String[]{String.valueOf(id)});
+        if(cursor.moveToNext()){
+            int type = cursor.getInt(cursor.getColumnIndex("type"));
+            String username = cursor.getString(cursor.getColumnIndex("username"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            String phone = cursor.getString(cursor.getColumnIndex("phone"));
+            String content = cursor.getString(cursor.getColumnIndex("content"));
+            Advice advice = new Advice(id, type, username, name, phone, content);
+            cursor.close();
+            return advice;
+        }else{
+            Log.e("tag", "没有符合条件的结果！");
+            return null;
+        }
     }
 
     public List<Advice> getAllAdvices(){
