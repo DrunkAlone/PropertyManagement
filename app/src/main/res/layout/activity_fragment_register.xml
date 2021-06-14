@@ -176,6 +176,7 @@
         <EditText
             android:id="@+id/register_age"
             android:hint="请输入年龄"
+            android:inputType="number"
             android:background="@drawable/layer"
             android:layout_width="150dp"
             style="@style/em_login_et_input" />
@@ -232,7 +233,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/register_l5"
-        app:layout_constraintBottom_toTopOf="@id/register_user_prot"
+        app:layout_constraintBottom_toTopOf="@id/register_l9"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -252,9 +253,51 @@
             android:background="@drawable/layer"
             style="@style/em_login_et_input" />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/register_l9"
+        android:paddingTop="20dp"
+        android:layout_marginRight="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/register_l6"
+        app:layout_constraintBottom_toTopOf="@id/register_user_prot"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/register_tv_auth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:hint="类     型："
+            android:textSize="15sp" />
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.6"
+            android:id="@+id/register_authRadio"
+            android:layout_marginLeft="10dp">
+            <RadioButton
+                android:layout_marginLeft="30dp"
+                android:id="@+id/register_rb_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:textColor="#386583"
+                android:text="业主"/>
 
+            <RadioButton
+                android:id="@+id/register_rb_staff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="#386583"
+                android:text="维修工" />
+        </RadioGroup>
+    </LinearLayout>
     <TextView
-        android:paddingVertical="20dp"
+        android:paddingVertical="10dp"
         android:id="@+id/register_user_prot"
         android:layout_centerInParent="true"
         android:text="*注册即代表同意《用户协议》及《公寓手册》"
@@ -263,7 +306,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/bt_register"
-        app:layout_constraintBottom_toBottomOf="@id/register_l6"/>
+        app:layout_constraintBottom_toBottomOf="@id/register_l9"/>
 
     <Button
         android:id="@+id/bt_register"

@@ -33,6 +33,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
+
 public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;
@@ -85,13 +87,13 @@ public class DashboardFragment extends Fragment {
                 new int[]{R.id.moment_name, R.id.moment_content, R.id.moment_time, R.id.moment_category});
         ListView listView = (ListView)root.findViewById(R.id.listview);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Map<String,Object> map=(Map<String,Object>)adapterView.getItemAtPosition(i);
-                Toast.makeText(DashboardFragment.this.getActivity(), map.get("username").toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Map<String,Object> map=(Map<String,Object>)adapterView.getItemAtPosition(i);
+//                Toast.makeText(DashboardFragment.this.getActivity(), map.get("username").toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -160,4 +162,5 @@ public class DashboardFragment extends Fragment {
         iv_search = root.findViewById(R.id.dashboard_moment_search);
         iv_category = root.findViewById(R.id.dashboard_moment_category);
     }
+
 }

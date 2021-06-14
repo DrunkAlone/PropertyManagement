@@ -86,7 +86,7 @@ public class RepairsActivity extends AppCompatActivity implements View.OnClickLi
             boolean isEmpty = project_name.equals("") || date.equals("") || room.equals("") || name.equals("") ||
                 phone.equals("") || description.equals("");
             if(!isEmpty){
-                Repairs repairs = new Repairs(1, username, project_name, date, room, name, phone, description, 0, 0, "无", "无");
+                Repairs repairs = new Repairs(1, username, project_name, date, "", "", room, name, phone, description, 0, 0, 0, 5, "无", "无");
                 RepairsService repairsService = new RepairsService(RepairsActivity.this);
                 if(repairsService.addRepairs(repairs)){
                     Toast.makeText(RepairsActivity.this, "成功提交！", Toast.LENGTH_SHORT).show();

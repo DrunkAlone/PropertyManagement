@@ -20,7 +20,9 @@ import androidx.core.content.res.ResourcesCompat;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 import com.pro.propertymanagepro.R;
+import com.pro.propertymanagepro.dao.StaffService;
 import com.pro.propertymanagepro.dao.UserService;
+import com.pro.propertymanagepro.entity.Staff;
 import com.pro.propertymanagepro.entity.User;
 
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
@@ -38,6 +40,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private RadioGroup rg_gender;
     private RadioButton rb_female;
     private RadioButton rb_male;
+    private RadioButton rb_user;
+    private RadioButton rb_staff;
 
     private Button bt_signup;
 
@@ -49,6 +53,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private int age;
     private int gender;
     private int roomNo;
+    private int auth;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,6 +79,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         rb_female = findViewById(R.id.register_rb_female);
         rb_male = findViewById(R.id.register_rb_male);
 
+        rb_staff = findViewById(R.id.register_rb_staff);
+        rb_user = findViewById(R.id.register_rb_user);
+
         //设置按钮响应事件
         bt_signup.setOnClickListener(this);
 
@@ -89,9 +97,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         repassword = et_repassword.getText().toString().trim();
         name = et_name.getText().toString().trim();
         phone = et_phone.getText().toString().trim();
-        age = Integer.parseInt(et_age.getText().toString());
-        roomNo = Integer.parseInt(et_roomNo.getText().toString());
+        age = Integer.parseInt(et_age.getText().toString().equals("") ? "0" : et_age.getText().toString());
+        roomNo = Integer.parseInt(et_roomNo.getText().toString().equals("") ? "0" : et_roomNo.getText().toString());
         gender = rb_male.isChecked() ? 1 : 0;
+        auth = rb_user.isChecked() ? 0 : 1;
         boolean isEmpty = username.equals("") || password.equals("") || repassword.equals("") ||
             name.equals("") || phone.equals("") ||
             age == 0 || roomNo == 0;
@@ -105,7 +114,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 EMClient.getInstance().createAccount(username, password);
                                 //添加用户信息至数据库
                                 UserService userService = new UserService(RegisterActivity.this);
-                                User user = new User(1, 0, username, password, name, age, gender, roomNo, phone);
+                                User user = new User(1, auth, username, password, name, age, gender, roomNo, phone, "");
+                                //判断用户权限
+                                if(auth == 1){
+                                    StaffService staffService = new StaffService(RegisterActivity.this);
+                                    Staff staff = new Staff(1, username, name, "", phone);
+                                    staffService.addStaff(staff);
+                                }
                                 if(userService.addUser(user)){
                                     System.out.println(userService.getUsers());
                                     show(200);

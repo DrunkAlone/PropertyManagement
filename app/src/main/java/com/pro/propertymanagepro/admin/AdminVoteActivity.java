@@ -20,6 +20,7 @@ import com.pro.propertymanagepro.entity.Vote;
 import java.util.Calendar;
 
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
 
 public class AdminVoteActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -160,5 +161,11 @@ public class AdminVoteActivity extends AppCompatActivity implements View.OnClick
         Calendar calendar = Calendar.getInstance();
         String now = calendar.get(Calendar.YEAR)+ " 年 " + (calendar.get(Calendar.MONTH)+1) + " 月 " + calendar.get(Calendar.DAY_OF_MONTH)+ " 日 ";
         return now;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeActivity(this);
     }
 }

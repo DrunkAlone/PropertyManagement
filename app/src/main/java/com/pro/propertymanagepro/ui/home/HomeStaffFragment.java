@@ -34,6 +34,11 @@ import com.pro.propertymanagepro.basic.RepairsActivity;
 import com.pro.propertymanagepro.basic.SurroundingsActivity;
 import com.pro.propertymanagepro.basic.TestActivity;
 import com.pro.propertymanagepro.basic.VoteActivity;
+import com.pro.propertymanagepro.dao.StaffService;
+import com.pro.propertymanagepro.entity.Staff;
+import com.pro.propertymanagepro.staff.StaffMyOrdersActivity;
+import com.pro.propertymanagepro.staff.StaffOrderActivity;
+import com.pro.propertymanagepro.staff.StaffTaskActivity;
 import com.pro.propertymanagepro.ui.dashboard.DashboardFragment;
 import com.pro.propertymanagepro.ui.notifications.NotificationsFragment;
 import com.pro.propertymanagepro.util.PermissionActivity;
@@ -44,7 +49,7 @@ import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
 
 public class HomeStaffFragment extends Fragment implements View.OnClickListener{
 
-    private ImageView iv_repairs;
+    private ImageView iv_task;
     private ImageView iv_order;
     private ImageView iv_myorders;
     private ImageView iv_announce;
@@ -75,23 +80,27 @@ public class HomeStaffFragment extends Fragment implements View.OnClickListener{
      */
     protected int lastPosition;
 
-    final String[] items = {"手机号码:18170265886", "电子邮箱:property@gmail.com"};
     //默认初始化
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home_staff, container, false);
-        iv_repairs = root.findViewById(R.id.home_staff_repairs);
+        iv_task = root.findViewById(R.id.home_staff_task);
         iv_order = root.findViewById(R.id.home_staff_order);
         iv_myorders = root.findViewById(R.id.home_staff_myorders);
         iv_announce = root.findViewById(R.id.home_staff_announce);
 
-        iv_repairs.setOnClickListener(this);
+        iv_task.setOnClickListener(this);
         iv_order.setOnClickListener(this);
         iv_myorders.setOnClickListener(this);
         iv_announce.setOnClickListener(this);
 
         Bundle bundle1 = getActivity().getIntent().getExtras();
         username = bundle1.getString("username");
+
+//        Staff staff = new Staff(1, "cd", "蓝色", "", "14089765590");
+//        StaffService staffService = new StaffService(getContext());
+//        staffService.addStaff(staff);
+//        System.out.println("#####################\n" + staffService.getStaffs());
 
         //设置轮播图
         viewPager = root.findViewById(R.id.viewpager);
@@ -243,13 +252,13 @@ public class HomeStaffFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.home_staff_repairs:
-                Intent intent = new Intent(HomeStaffFragment.this.getActivity(), RepairsActivity.class);
+            case R.id.home_staff_task:
+                Intent intent = new Intent(HomeStaffFragment.this.getActivity(), StaffTaskActivity.class);
                 intent.putExtra("username", username);
                 startActivity(intent);
                 break;
             case R.id.home_staff_order:
-                Intent intent5 = new Intent(HomeStaffFragment.this.getActivity(), PayActivity.class);
+                Intent intent5 = new Intent(HomeStaffFragment.this.getActivity(), StaffOrderActivity.class);
                 intent5.putExtra("username", username);
                 startActivity(intent5);
                 break;
@@ -259,7 +268,7 @@ public class HomeStaffFragment extends Fragment implements View.OnClickListener{
                 startActivity(intent4);
                 break;
             case R.id.home_staff_myorders:
-                Intent intent2 = new Intent(HomeStaffFragment.this.getActivity(), AdviceActivity.class);
+                Intent intent2 = new Intent(HomeStaffFragment.this.getActivity(), StaffMyOrdersActivity.class);
                 intent2.putExtra("username", username);
                 startActivity(intent2);
                 break;

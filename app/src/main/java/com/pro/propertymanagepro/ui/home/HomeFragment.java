@@ -116,7 +116,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         repairs = root.findViewById(R.id.home_repairs);
         pay = root.findViewById(R.id.home_pay);
-        vehicle = root.findViewById(R.id.home_parking);
+//        vehicle = root.findViewById(R.id.home_parking);
         announce = root.findViewById(R.id.home_announce);
         advice = root.findViewById(R.id.home_advice);
         contact = root.findViewById(R.id.home_contact);
@@ -129,7 +129,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         repairs.setOnClickListener(this);
         pay.setOnClickListener(this);
-        vehicle.setOnClickListener(this);
+//        vehicle.setOnClickListener(this);
         announce.setOnClickListener(this);
         advice.setOnClickListener(this);
         contact.setOnClickListener(this);
@@ -303,12 +303,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 intent5.putExtra("username", username);
                 startActivity(intent5);
                 break;
-            case R.id.home_parking:
-//                Toast.makeText(getContext(), "该功能尚未开发，敬请期待！",Toast.LENGTH_SHORT).show();
-                Intent intent9 = new Intent(HomeFragment.this.getActivity(), TestActivity.class);
-                intent9.putExtra("username", username);
-                startActivity(intent9);
-                break;
+//            case R.id.home_parking:
+////                Toast.makeText(getContext(), "该功能尚未开发，敬请期待！",Toast.LENGTH_SHORT).show();
+//                Intent intent9 = new Intent(HomeFragment.this.getActivity(), TestActivity.class);
+//                intent9.putExtra("username", username);
+//                startActivity(intent9);
+//                break;
             case R.id.home_announce:
                 Intent intent4 = new Intent(HomeFragment.this.getActivity(), AnnounceActivity.class);
                 intent4.putExtra("username", username);

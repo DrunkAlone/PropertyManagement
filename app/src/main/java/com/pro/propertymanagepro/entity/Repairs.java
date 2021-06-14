@@ -7,26 +7,34 @@ public class Repairs implements Serializable {
     private String username;
     private String project_name;
     private String date;
+    private String handled_date;
+    private String finished_date;
     private String room;
     private String name;
     private String phone;
     private String description;
     private int distribute_status;
     private int handle_status;
+    private int finished_status;
+    private int score;
     private String distributer;
     private String handler;
 
-    public Repairs(int id, String username, String project_name, String date, String room, String name, String phone, String description, int distribute_status, int handle_status, String distributer, String handler) {
+    public Repairs(int id, String username, String project_name, String date, String handled_date, String finished_date, String room, String name, String phone, String description, int distribute_status, int handle_status, int finished_status, int score, String distributer, String handler) {
         this.id = id;
         this.username = username;
         this.project_name = project_name;
         this.date = date;
+        this.handled_date = handled_date;
+        this.finished_date = finished_date;
         this.room = room;
         this.name = name;
         this.phone = phone;
         this.description = description;
         this.distribute_status = distribute_status;
         this.handle_status = handle_status;
+        this.finished_status = finished_status;
+        this.score = score;
         this.distributer = distributer;
         this.handler = handler;
     }
@@ -127,6 +135,38 @@ public class Repairs implements Serializable {
         this.handler = handler;
     }
 
+    public String getHandled_date() {
+        return handled_date;
+    }
+
+    public void setHandled_date(String handled_date) {
+        this.handled_date = handled_date;
+    }
+
+    public String getFinished_date() {
+        return finished_date;
+    }
+
+    public void setFinished_date(String finished_date) {
+        this.finished_date = finished_date;
+    }
+
+    public int getFinished_status() {
+        return finished_status;
+    }
+
+    public void setFinished_status(int finished_status) {
+        this.finished_status = finished_status;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     @Override
     public String toString() {
         return "Repairs{" +
@@ -134,12 +174,16 @@ public class Repairs implements Serializable {
                 ", username='" + username + '\'' +
                 ", project_name='" + project_name + '\'' +
                 ", date='" + date + '\'' +
+                ", handled_date='" + handled_date + '\'' +
+                ", finished_date='" + finished_date + '\'' +
                 ", room='" + room + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", description='" + description + '\'' +
                 ", distribute_status=" + distribute_status +
                 ", handle_status=" + handle_status +
+                ", finished_status=" + finished_status +
+                ", score=" + score +
                 ", distributer='" + distributer + '\'' +
                 ", handler='" + handler + '\'' +
                 '}';

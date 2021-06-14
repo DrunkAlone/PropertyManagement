@@ -1,5 +1,6 @@
 package com.pro.propertymanagepro.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -21,7 +22,7 @@ public class StaffService {
     }
 
     public Boolean addStaff(Staff staff){
-        String sql = "insert into Staff(username, name, taskList, phone) values(?,?)";
+        String sql = "insert into Staff(username, name, taskList, phone) values(?,?,?,?)";
         Object []ob = {
                 staff.getUsername(),
                 staff.getName(),
@@ -54,6 +55,24 @@ public class StaffService {
         }
     }
 
+    public Staff getStaff(String username){
+        String sql = "select * from Staff where username = ?";
+        Cursor cursor = sdb.rawQuery(sql, new String[]{username});
+        if(cursor.moveToNext()){
+            int id = cursor.getInt(cursor.getColumnIndex("id"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            String taskList = cursor.getString(cursor.getColumnIndex("taskList"));
+            String phone = cursor.getString(cursor.getColumnIndex("phone"));
+            Staff staff = new Staff(id, username, name, taskList, phone);
+            cursor.close();
+            return staff;
+        }
+        else{
+            Log.e("tag", "没有符合条件的结果！");
+            return null;
+        }
+    }
+
     public List<Staff> getStaffs(){
         List<Staff> list= new ArrayList<Staff>();
         Cursor cursor = sdb.query("Staff", null, null, null, null, null, "username DESC");
@@ -67,5 +86,17 @@ public class StaffService {
             list.add(staff);
         }
         return list;
+    }
+
+    public Boolean updateStaff(Staff staff){
+        try{
+            ContentValues values = new ContentValues();
+            values.put("name", staff.getName());
+            values.put("phone", staff.getPhone());
+            sdb.update("Staff", values, "username = ?", new String[]{staff.getUsername()});
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return true;
     }
 }

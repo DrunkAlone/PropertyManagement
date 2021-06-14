@@ -49,6 +49,7 @@
         android:id="@+id/chat_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="#E4E4E4"
         android:layout_alignParentBottom="true">
 
         <Button
@@ -63,11 +64,12 @@
             android:text="发送"/>
         <EditText
             android:id="@+id/chat_messageInput"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
+            android:background="@drawable/inputbackground"
             android:layout_toLeftOf="@+id/chat_send"/>
 
     </RelativeLayout>

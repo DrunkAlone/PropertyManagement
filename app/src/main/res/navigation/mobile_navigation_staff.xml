@@ -17,8 +17,14 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_info"
-        android:name="com.pro.propertymanagepro.ui.info.InfoFragment"
+        android:id="@+id/navigation_notifications"
+        android:name="com.pro.propertymanagepro.ui.notifications.NotificationsFragment"
+        android:label="消息"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_info_staff"
+        android:name="com.pro.propertymanagepro.ui.info.InfoStaffFragment"
         android:label="个人"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info_staff" />
 </navigation>

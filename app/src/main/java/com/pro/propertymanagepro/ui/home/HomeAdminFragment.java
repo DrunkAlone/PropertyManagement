@@ -31,6 +31,7 @@ import com.pro.propertymanagepro.admin.AdminLocationActivity;
 import com.pro.propertymanagepro.admin.AdminPayActivity;
 import com.pro.propertymanagepro.admin.AdminRepairsActivity;
 import com.pro.propertymanagepro.admin.AdminRepairsDetailActivity;
+import com.pro.propertymanagepro.admin.AdminUserActivity;
 import com.pro.propertymanagepro.admin.AdminVoteActivity;
 import com.pro.propertymanagepro.basic.AdviceActivity;
 import com.pro.propertymanagepro.basic.AnnounceActivity;
@@ -311,6 +312,9 @@ public class HomeAdminFragment extends Fragment implements View.OnClickListener{
                 startActivity(intent2);
                 break;
             case R.id.home_admin_user:
+                Intent intent9 = new Intent(HomeAdminFragment.this.getActivity(), AdminUserActivity.class);
+                intent9.putExtra("username", username);
+                startActivity(intent9);
                 break;
             case R.id.home_admin_moment:
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -318,7 +322,7 @@ public class HomeAdminFragment extends Fragment implements View.OnClickListener{
                 fragmentTransaction.hide(new HomeFragment()).replace(R.id.nav_host_fragment_admin, new DashboardFragment()).commit();
                 break;
             case R.id.home_admin_surroundings:
-                Intent intent7 = new Intent(HomeAdminFragment.this.getActivity(), AdminLocationActivity.class);
+                Intent intent7 = new Intent(HomeAdminFragment.this.getActivity(), SurroundingsActivity.class);
                 intent7.putExtra("username", username);
                 startActivity(intent7);
                 break;

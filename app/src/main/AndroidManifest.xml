@@ -91,8 +91,10 @@
         <activity android:name=".basic.RepairsActivity"/>
         <activity android:name=".basic.AnnounceActivity"/>
         <activity android:name=".basic.MyRepairsActivity"/>
+        <activity android:name=".basic.MyRepairsBasicActivity"/>
         <activity android:name=".basic.MyMomentActivity"/>
         <activity android:name=".basic.MyAdviceActivity"/>
+        <activity android:name=".basic.MyAdviceBasicActivity"/>
         <activity android:name=".basic.AdviceActivity"/>
         <activity android:name=".basic.MomentAddActivity"/>
         <activity android:name=".basic.MomentCategoryActivity"/>
@@ -119,6 +121,13 @@
         <activity android:name=".admin.AdminUserActivity"/>
         <activity android:name=".admin.AdminUserDetailActivity"/>
         <activity android:name=".admin.AdminVoteActivity"/>
+
+        <activity android:name=".staff.StaffMyOrdersActivity"/>
+        <activity android:name=".staff.StaffMyOrdersDetailActivity"/>
+        <activity android:name=".staff.StaffOrderActivity"/>
+        <activity android:name=".staff.StaffOrderDetailActivity"/>
+        <activity android:name=".staff.StaffTaskActivity"/>
+        <activity android:name=".staff.StaffTaskDetailActivity"/>
 
         <activity android:name=".CentralAdminActivity"/>
         <activity android:name=".CentralStaffActivity"/>

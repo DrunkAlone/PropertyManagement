@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
 
 public class SurroundingsSearchActivity extends AppCompatActivity {
 
@@ -60,5 +61,11 @@ public class SurroundingsSearchActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeActivity(this);
     }
 }

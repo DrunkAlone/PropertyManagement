@@ -21,8 +21,10 @@ import com.pro.propertymanagepro.R;
 import com.pro.propertymanagepro.basic.InfoActivity;
 import com.pro.propertymanagepro.basic.LoginActivity;
 import com.pro.propertymanagepro.basic.MyAdviceActivity;
+import com.pro.propertymanagepro.basic.MyAdviceBasicActivity;
 import com.pro.propertymanagepro.basic.MyMomentActivity;
 import com.pro.propertymanagepro.basic.MyRepairsActivity;
+import com.pro.propertymanagepro.basic.MyRepairsBasicActivity;
 import com.pro.propertymanagepro.basic.SettingsActivity;
 import com.pro.propertymanagepro.dao.AdviceService;
 import com.pro.propertymanagepro.dao.MomentService;
@@ -78,7 +80,7 @@ public class InfoFragment extends Fragment {
         iv_repairs.setItemClickListener(new ItemView.itemClickListener() {
             @Override
             public void itemClick(String text) {
-                Intent intent = new Intent(InfoFragment.this.getActivity(), MyRepairsActivity.class);
+                Intent intent = new Intent(InfoFragment.this.getActivity(), MyRepairsBasicActivity.class);
                 intent.putExtra("username", username);
                 startActivity(intent);
             }
@@ -105,7 +107,7 @@ public class InfoFragment extends Fragment {
                 if(list.size() == 0){
                     Toast.makeText(getContext(), "您并没有提出建议！", Toast.LENGTH_SHORT).show();
                 }else{
-                    Intent intent = new Intent(InfoFragment.this.getActivity(), MyAdviceActivity.class);
+                    Intent intent = new Intent(InfoFragment.this.getActivity(), MyAdviceBasicActivity.class);
                     intent.putExtra("username", username);
                     startActivity(intent);
                 }

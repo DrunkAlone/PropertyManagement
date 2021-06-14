@@ -12,8 +12,9 @@ public class User implements Serializable {
     private int gender;
     private int roomNo;
     private String phone;
+    private String license;
 
-    public User(int id, int auth, String username, String pwd, String name, int age, int gender, int roomNo, String phone) {
+    public User(int id, int auth, String username, String pwd, String name, int age, int gender, int roomNo, String phone, String license) {
         this.id = id;
         this.auth = auth;
         this.username = username;
@@ -23,6 +24,7 @@ public class User implements Serializable {
         this.gender = gender;
         this.roomNo = roomNo;
         this.phone = phone;
+        this.license = license;
     }
     public int getId() {
         return id;
@@ -92,6 +94,10 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
+    public String getLicense() { return license; }
+
+    public void setLicense(String license) { this.license = license;}
+
     @Override
     public String toString() {
         return "User{" +
@@ -104,6 +110,7 @@ public class User implements Serializable {
                 ", gender=" + gender +
                 ", roomNo=" + roomNo +
                 ", phone=" + phone +
+                ", license=" + license +
                 '}';
     }
 

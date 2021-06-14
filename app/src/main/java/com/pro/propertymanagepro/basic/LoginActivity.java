@@ -17,6 +17,10 @@ import com.pro.propertymanagepro.CentralAdminActivity;
 import com.pro.propertymanagepro.CentralStaffActivity;
 import com.pro.propertymanagepro.MainActivity;
 import com.pro.propertymanagepro.R;
+import com.pro.propertymanagepro.dao.AdministratorService;
+import com.pro.propertymanagepro.dao.UserService;
+import com.pro.propertymanagepro.entity.Administrator;
+import com.pro.propertymanagepro.entity.User;
 
 import org.w3c.dom.Text;
 
@@ -32,11 +36,22 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
 
     private String username;
     private String password;
+    private int auth;
+
+    private UserService userService;
+    private User user;
+    private AdministratorService administratorService;
+    private Administrator administrator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         addActivity(this);
+
+        userService = new UserService(this);
+        administratorService = new AdministratorService(this);
+
         initView();
     }
 
@@ -80,7 +95,6 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
         else if(view.getId() == R.id.login_register){
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
-            finish();
         }
     }
 
@@ -92,18 +106,45 @@ public class LoginActivity extends AppCompatActivity  implements View.OnClickLis
                     case 200:
                         //跳转至主界面
                         Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginActivity.this, CentralActivity.class);
-                        Intent intent2 = new Intent(LoginActivity.this, CentralAdminActivity.class);
-                        Intent intent3 = new Intent(LoginActivity.this, CentralStaffActivity.class);
-                        intent.putExtra("username", username);
-                        intent2.putExtra("username", username);
-                        intent3.putExtra("username", username);
-                        if(username.equals("aa")){
-                            startActivity(intent2);
-                        }else if(username.equals("cd")){
-                            startActivity(intent3);
-                        }else{
-                            startActivity(intent);
+//                        Intent intent = new Intent(LoginActivity.this, CentralActivity.class);
+//                        Intent intent2 = new Intent(LoginActivity.this, CentralAdminActivity.class);
+//                        Intent intent3 = new Intent(LoginActivity.this, CentralStaffActivity.class);
+//                        intent.putExtra("username", username);
+//                        intent2.putExtra("username", username);
+//                        intent3.putExtra("username", username);
+//                        if(username.equals("aa")){
+//                            startActivity(intent2);
+//                        }else if(username.equals("cd")){
+//                            startActivity(intent3);
+//                        }else{
+//                            startActivity(intent);
+//                        }
+
+                        user = userService.getUser(username);
+
+//                        //新增一个管理员
+//                        administrator = new Administrator(1, username, "回忆", "山东省青岛市黄岛区和平小区3-4栋的房屋的维护与修缮管理以及绿化即车辆治安的管理。");
+//                        administratorService.addAdministrator(administrator);
+//                        user.setAuth(2);
+//                        userService.updateUser(user);
+
+                        auth = user.getAuth();
+                        switch (auth){
+                            case 0:
+                                Intent intent = new Intent(LoginActivity.this, CentralActivity.class);
+                                intent.putExtra("username", username);
+                                startActivity(intent);
+                                break;
+                            case 1:
+                                Intent intent3 = new Intent(LoginActivity.this, CentralStaffActivity.class);
+                                intent3.putExtra("username", username);
+                                startActivity(intent3);
+                                break;
+                            case 2:
+                                Intent intent2 = new Intent(LoginActivity.this, CentralAdminActivity.class);
+                                intent2.putExtra("username", username);
+                                startActivity(intent2);
+                                break;
                         }
                         finish();
                         break;

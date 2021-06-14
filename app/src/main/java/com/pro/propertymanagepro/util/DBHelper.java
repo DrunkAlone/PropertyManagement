@@ -17,18 +17,23 @@ public class DBHelper extends SQLiteOpenHelper {
             "age integer," +
             "gender integer," +
             "roomNo integer," +
-            "phone varchar(11))";
+            "phone varchar(11)," +
+            "license varchar(20))";
     private final static String createTable2 = "create table " + "Repairs" +
             "(id integer primary key AUTOINCREMENT," +
             "username varchar(20)," +
             "project_name varchar(30)," +
             "date varchar(40)," +
+            "handled_date varchar(40)," +
+            "finished_date varchar(40)," +
             "room varchar(20)," +
             "name varchar(10)," +
             "phone varchar(11)," +
             "description varchar(255)," +
             "distribute_status int," +
             "handle_status int," +
+            "finished_status int," +
+            "score int," +
             "distributer varchar(40)," +
             "handler varchar(40))";
     private final static String createTable3 = "create table " + "Moment" +

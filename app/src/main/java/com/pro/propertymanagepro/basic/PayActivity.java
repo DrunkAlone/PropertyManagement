@@ -33,6 +33,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
 
 public class PayActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -82,10 +83,6 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
         bt_deposit_choose.setOnClickListener(this);
         bt_submit.setOnClickListener(this);
     }
-
-    protected void onDestroy() {
-        super.onDestroy();
-    };
 
     @Override
     public void onClick(View v) {
@@ -159,5 +156,11 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
         long date = new Date().getTime();
         int random = (int)((Math.random()*9+1)*100000);
         return date + "" + random;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeActivity(this);
     }
 }

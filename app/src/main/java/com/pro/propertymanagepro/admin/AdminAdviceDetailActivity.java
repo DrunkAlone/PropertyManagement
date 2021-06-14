@@ -16,6 +16,7 @@ import com.pro.propertymanagepro.dao.AdviceService;
 import com.pro.propertymanagepro.entity.Advice;
 
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
 
 public class AdminAdviceDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -81,5 +82,11 @@ public class AdminAdviceDetailActivity extends AppCompatActivity implements View
         if(v.getId() == R.id.advice_admin_back){
             finish();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeActivity(this);
     }
 }

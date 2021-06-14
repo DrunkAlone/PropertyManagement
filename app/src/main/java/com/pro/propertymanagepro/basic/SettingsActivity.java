@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.pro.propertymanagepro.R;
 
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
+
 public class SettingsActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,5 +42,11 @@ public class SettingsActivity extends AppCompatActivity {
 //            super.onCreate(savedInstanceState);
 //            addPreferencesFromResource(R.xml.settingsfragment);
 //        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeActivity(this);
     }
 }

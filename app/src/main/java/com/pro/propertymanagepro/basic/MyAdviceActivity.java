@@ -28,6 +28,7 @@ public class MyAdviceActivity extends AppCompatActivity implements View.OnClickL
     private TextView tv_content;
     private Button bt_back;
 
+    private int id;
     private String type;
     private String username;
     private String name;
@@ -40,7 +41,7 @@ public class MyAdviceActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_my_advice);
         addActivity(this);
         Intent intent = this.getIntent();
-        username = intent.getStringExtra("username");
+        id = Integer.parseInt(intent.getStringExtra("id"));
         initView();
     }
 
@@ -55,8 +56,7 @@ public class MyAdviceActivity extends AppCompatActivity implements View.OnClickL
 
         //为表单赋值
         AdviceService adviceService = new AdviceService(this);
-        List<Advice> list = adviceService.getAdviceByUser(username);
-        Advice advice = list.get(0);
+        Advice advice = adviceService.getAdviceByID(id);
         type = advice.getType() == 0 ? "建议" : "投诉";
         name = advice.getName();
         phone = advice.getPhone();

@@ -20,6 +20,7 @@ import com.pro.propertymanagepro.entity.User;
 import com.pro.propertymanagepro.entity.Vote;
 
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
 
 public class VoteDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -171,5 +172,11 @@ public class VoteDetailActivity extends AppCompatActivity implements View.OnClic
             }
         }
         return false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeActivity(this);
     }
 }

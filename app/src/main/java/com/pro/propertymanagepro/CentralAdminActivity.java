@@ -21,7 +21,7 @@ public class CentralAdminActivity extends AppCompatActivity {
         addActivity(this);
         BottomNavigationView navView = findViewById(R.id.nav_view_admin);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home_admin, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_info)
+                R.id.navigation_home_admin, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_info_admin)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_admin);
         NavigationUI.setupWithNavController(navView, navController);

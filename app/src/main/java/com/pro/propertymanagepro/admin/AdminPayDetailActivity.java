@@ -17,6 +17,7 @@ import com.pro.propertymanagepro.dao.OrderService;
 import com.pro.propertymanagepro.entity.Order;
 
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
 
 public class AdminPayDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -79,5 +80,11 @@ public class AdminPayDetailActivity extends AppCompatActivity implements View.On
         if(v.getId() == R.id.pay_admin_back){
             finish();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeActivity(this);
     }
 }

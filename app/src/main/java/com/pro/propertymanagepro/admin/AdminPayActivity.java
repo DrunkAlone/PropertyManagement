@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
 
 public class AdminPayActivity extends AppCompatActivity {
 
@@ -65,5 +66,11 @@ public class AdminPayActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeActivity(this);
     }
 }

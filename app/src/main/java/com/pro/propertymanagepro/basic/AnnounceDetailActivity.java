@@ -17,6 +17,7 @@ import com.pro.propertymanagepro.entity.Announce;
 import java.util.List;
 
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
 
 public class AnnounceDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -57,5 +58,11 @@ public class AnnounceDetailActivity extends AppCompatActivity implements View.On
         if(v.getId() == R.id.announce_detail_back){
             finish();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeActivity(this);
     }
 }

@@ -46,6 +46,7 @@ import java.util.List;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
 
 public class SurroundingsActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -233,5 +234,6 @@ public class SurroundingsActivity extends AppCompatActivity implements View.OnCl
         mMapView.onDestroy();
         mMapView = null;
         super.onDestroy();
+        removeActivity(this);
     }
 }

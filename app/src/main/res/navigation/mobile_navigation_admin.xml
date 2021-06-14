@@ -24,8 +24,8 @@
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
-        android:id="@+id/navigation_info"
-        android:name="com.pro.propertymanagepro.ui.info.InfoFragment"
+        android:id="@+id/navigation_info_admin"
+        android:name="com.pro.propertymanagepro.ui.info.InfoAdminFragment"
         android:label="个人"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info_admin" />
 </navigation>

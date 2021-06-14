@@ -1,5 +1,6 @@
 package com.pro.propertymanagepro.admin;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -21,14 +22,21 @@ import java.util.List;
 import java.util.Map;
 
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
 
 public class AdminRepairsActivity extends AppCompatActivity {
+
+    private String username;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_admin);
         addActivity(this);
+
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
+
         initView();
     }
 
@@ -45,15 +53,16 @@ public class AdminRepairsActivity extends AppCompatActivity {
             map.put("date", "发起日期：" + repair.getDate());
             map.put("distributeStatus", repair.getDistribute_status() == 0 ? "任务未派发" : "任务已派发");
             map.put("handleStatus", repair.getHandle_status() == 0 ? "任务未接单" : "任务已接单");
+            map.put("finishedStatus", repair.getFinished_status() == 0 ? "任务未完成" : "任务已完成");
             list.add(map);
         }
 
         SimpleAdapter adapter = new SimpleAdapter(this,
                 list,
                 R.layout.item_task_admin,
-                new String[]{"projectName", "username", "date", "distributeStatus", "handleStatus"},
+                new String[]{"projectName", "username", "date", "distributeStatus", "handleStatus", "finishedStatus"},
                 new int[]{R.id.task_item_admin_projectName, R.id.task_item_admin_username, R.id.task_item_admin_date,
-                    R.id.task_item_admin_distributeStatus, R.id.task_item_admin_handleStatus});
+                    R.id.task_item_admin_distributeStatus, R.id.task_item_admin_handleStatus, R.id.task_item_admin_finishedStatus});
         ListView listView = (ListView)findViewById(R.id.listview);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -62,8 +71,15 @@ public class AdminRepairsActivity extends AppCompatActivity {
                 Map<String,Object> map=(Map<String,Object>)parent.getItemAtPosition(position);
                 Intent intent = new Intent(AdminRepairsActivity.this, AdminRepairsDetailActivity.class);
                 intent.putExtra("id", map.get("id").toString());
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeActivity(this);
     }
 }

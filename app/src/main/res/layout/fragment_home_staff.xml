@@ -79,7 +79,7 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/home_staff_repairs"
+                android:id="@+id/home_staff_task"
                 android:layout_marginTop="10dp"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
@@ -108,7 +108,7 @@
                 android:layout_height="40sp"
                 android:layout_gravity="center"
                 android:clickable="true"
-                android:background="@drawable/icon_pay_select"
+                android:background="@drawable/icon_advice_select"
                 android:onClick="onClick" />
             <TextView
                 android:id="@+id/home_tv_order"
@@ -130,7 +130,7 @@
                 android:layout_width="40sp"
                 android:layout_height="40sp"
                 android:layout_gravity="center"
-                android:background="@drawable/icon_surroundings_select"
+                android:background="@drawable/icon_consult_select"
                 android:clickable="true"
                 android:onClick="onClick" />
             <TextView

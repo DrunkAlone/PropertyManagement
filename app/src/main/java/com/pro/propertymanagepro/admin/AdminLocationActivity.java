@@ -15,6 +15,7 @@ import com.pro.propertymanagepro.dao.AdministratorService;
 import com.pro.propertymanagepro.entity.Administrator;
 
 import static com.pro.propertymanagepro.util.ActivityCollectorUtil.addActivity;
+import static com.pro.propertymanagepro.util.ActivityCollectorUtil.removeActivity;
 
 public class AdminLocationActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -53,5 +54,11 @@ public class AdminLocationActivity extends AppCompatActivity implements View.OnC
         if(v.getId() == R.id.location_admin_back){
             finish();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeActivity(this);
     }
 }

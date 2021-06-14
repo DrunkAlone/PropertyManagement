@@ -22,7 +22,7 @@ public class CentralStaffActivity extends AppCompatActivity {
         addActivity(this);
         BottomNavigationView navView = findViewById(R.id.nav_view_staff);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home_staff, R.id.navigation_dashboard, R.id.navigation_info)
+                R.id.navigation_home_staff, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_info_staff)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_staff);
         NavigationUI.setupWithNavController(navView, navController);

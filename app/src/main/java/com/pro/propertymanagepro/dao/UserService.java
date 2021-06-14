@@ -22,7 +22,7 @@ public class UserService {
     }
 
     public Boolean addUser(User user){
-        String sql = "insert into User(auth, username, pwd, name, age, gender, roomNo, phone) values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into User(auth, username, pwd, name, age, gender, roomNo, phone, license) values(?,?,?,?,?,?,?,?,?)";
         Object []ob = {
                 user.getAuth(),
                 user.getUsername(),
@@ -31,7 +31,8 @@ public class UserService {
                 user.getAge(),
                 user.getGender(),
                 user.getRoomNo(),
-                user.getPhone()
+                user.getPhone(),
+                user.getLicense()
         };
         try{
             sdb.execSQL(sql, ob);
@@ -48,6 +49,10 @@ public class UserService {
             values.put("age", user.getAge());
             values.put("gender", user.getGender());
             values.put("roomNo", user.getRoomNo());
+            values.put("name", user.getName());
+            values.put("phone", user.getPhone());
+            values.put("auth", user.getAuth());
+            values.put("license", user.getLicense());
             sdb.update("User", values, "username = ?", new String[]{user.getUsername()});
         }catch (SQLException e){
             e.printStackTrace();
@@ -72,7 +77,8 @@ public class UserService {
             int gender = cursor.getInt(cursor.getColumnIndex("gender"));
             int roomNo = cursor.getInt(cursor.getColumnIndex("roomNo"));
             String phone = cursor.getString(cursor.getColumnIndex("phone"));
-            User user = new User(id, auth, username, password, name, age, gender, roomNo, phone);
+            String license = cursor.getString(cursor.getColumnIndex("license"));
+            User user = new User(id, auth, username, password, name, age, gender, roomNo, phone, license);
             cursor.close();
             return user;
         }
@@ -94,7 +100,8 @@ public class UserService {
             int gender = cursor.getInt(cursor.getColumnIndex("gender"));
             int roomNo = cursor.getInt(cursor.getColumnIndex("roomNo"));
             String phone = cursor.getString(cursor.getColumnIndex("phone"));
-            User user = new User(id, auth, username, password, name, age, gender, roomNo, phone);
+            String license = cursor.getString(cursor.getColumnIndex("license"));
+            User user = new User(id, auth, username, password, name, age, gender, roomNo, phone, license);
             cursor.close();
             return user;
         }
@@ -102,6 +109,26 @@ public class UserService {
             Log.e("tag", "没有符合条件的结果！");
             return null;
         }
+    }
+
+    public List<User> getUsersByUsername(String username){
+        List<User> list= new ArrayList<User>();
+        String sql = "select * from User where username = ? or name = ? or phone = ?";
+        Cursor cursor = sdb.rawQuery(sql, new String[]{username, username});
+        while(cursor.moveToNext()){
+            int id = cursor.getInt(cursor.getColumnIndex("id"));
+            int auth = cursor.getInt(cursor.getColumnIndex("auth"));
+            String password = cursor.getString(cursor.getColumnIndex("pwd"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            int age = cursor.getInt(cursor.getColumnIndex("age"));
+            int gender = cursor.getInt(cursor.getColumnIndex("gender"));
+            int roomNo = cursor.getInt(cursor.getColumnIndex("roomNo"));
+            String phone = cursor.getString(cursor.getColumnIndex("phone"));
+            String license = cursor.getString(cursor.getColumnIndex("license"));
+            User user = new User(id, auth, username, password, name, age, gender, roomNo, phone, license);
+            list.add(user);
+        }
+        return list;
     }
 
     public List<User> getUsers(){
@@ -117,7 +144,8 @@ public class UserService {
             int gender = cursor.getInt(cursor.getColumnIndex("gender"));
             int roomNo = cursor.getInt(cursor.getColumnIndex("roomNo"));
             String phone = cursor.getString(cursor.getColumnIndex("phone"));
-            User user = new User(id, auth, username, password, name, age, gender, roomNo, phone);
+            String license = cursor.getString(cursor.getColumnIndex("license"));
+            User user = new User(id, auth, username, password, name, age, gender, roomNo, phone, license);
             list.add(user);
         }
         return list;
